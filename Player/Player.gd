@@ -4,10 +4,12 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var hp = 100
+export var move_speed = 400
 
-export var move_speed = 400;
-
-
+func getHP():
+	return hp
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
