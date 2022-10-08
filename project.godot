@@ -65,6 +65,14 @@ move_left={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="collisions"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="player_projectile"
+2d_physics/layer_5="enemy_projectile"
+
 [mono]
 
 project/assembly_name="TDS"
