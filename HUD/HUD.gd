@@ -11,5 +11,5 @@ func _ready():
 	pass # Replace with function body.
 
 
-func update_score(player_hp):
-	$PlayerHP.text = "Your hp:" + str(player_hp)
+func update_hp(player_maxHp, player_curHp):
+	$PlayerHP.text = "Your hp:" + str(player_curHp) + "/" + str(player_maxHp)

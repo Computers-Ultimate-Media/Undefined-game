@@ -3,8 +3,8 @@
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Enemy/test.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 38, 36 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
