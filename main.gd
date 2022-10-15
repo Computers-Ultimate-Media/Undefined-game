@@ -1,12 +1,18 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var Player
-
+var timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Player = get_node("Player")
-	$HUD.update_score(Player.getHP())
+	timer = get_node("RegenTimer")
+	timer.wait_time = 10 - Player.getPerkLVL()
+	
+	$RegenTimer.start()
+
+func _process(delta):
+	$HUD.update_hp(Player.getMaxHP(), Player.getCurrentHP())
+
+
+func _on_RegenTimer_timeout():
+	Player.regenerate()
