@@ -27,8 +27,27 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+#
+	if(Input.is_action_just_released("ui_accept")):
+		get_tree().root.get_node("main/Map").generate_map()
+#	if Input.is_action_pressed("scroll_up"):
+#		$Camera2D.zoom *= 1.01
+#	if Input.is_action_pressed("scroll_down"):
+#		$Camera2D.zoom *= 0.99
+	
+	if Input.is_key_pressed(KEY_1):
+		print_debug(position)
+	
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * move_speed
 		
-		position += velocity * delta
+		
+		move_and_slide(velocity)
+
+func _unhandled_input(event):
+	
+	if event.is_action_pressed("scroll_up"):
+		$Camera2D.zoom *= 1.1
+	if event.is_action_pressed("scroll_down"):
+		$Camera2D.zoom *= 0.9
