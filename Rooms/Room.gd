@@ -16,31 +16,23 @@ var room_state = roomState.UNVISITED
 #	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	pass
+#func _process(delta):
+#
+#	pass
 
 func spawn_Enemies():
 	print_debug("spawned enemies")
 
 	var enemiesToSpawn = [
-		[load("res://Enemy/Enemy.tscn"), 10]
+		[load("res://Enemy/Enemy.tscn"), 3]
 	]
 	
 	var random = RandomNumberGenerator.new()
-#	var spawnPosition = ($SpawnPosition as Position2D).position
-#	print_debug("spawn = "+ spawnPosition)
-#	print_debug("pos = "+ position.ToString())
 	for enemy in enemiesToSpawn:
 		for i in enemy[1]:
 			var instance = enemy[0].instance()
 			enemies.call_deferred("add_child", instance)
-#			enemies.add_child(instance)
-#			instance.set_position(spawnPosition) 
-			instance.position = Vector2(0,0)
-#			(instance as Node2D).set_deferred("position",Vector2(-300,-195))
-#			instance.set_deferred("position", Vector2(20,20))
-#			instance.set_position(Vector2(20,20)) 
+			instance.position = Vector2(0,random.randi_range(0, 100)) 
 
 func on_Enemy_death():
 	print_debug("enemy dead")
@@ -69,9 +61,8 @@ func _on_RoomArea_body_entered(body:KinematicBody2D):
 			pass
 		roomState.CLEARED:
 			pass
-	pass # Replace with function body.
-		
-		
+	pass
+
 func setDoors(state:bool):
 		for exit in exits:
 			exit.setOpen(state)
