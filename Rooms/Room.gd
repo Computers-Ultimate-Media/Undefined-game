@@ -54,7 +54,7 @@ func on_Enemy_death():
 
 func _on_RoomArea_body_entered(body:KinematicBody2D):
 	print_debug(body.name)
-	if( not body.name.begins_with("Player")):
+	if(not body.name.begins_with("Player")):
 		return
 	
 	print_debug(body)

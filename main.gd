@@ -1,18 +1,19 @@
 extends Node2D
 
-var Player
+var player
 var timer
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	Player = get_node("Player")
-	timer = get_node("RegenTimer")
-	timer.wait_time = 10 - Player.getPerkLVL()
+	player = $Player
+	timer = $RegenTimer
 	
-	$RegenTimer.start()
+	timer.wait_time = 10 - player.getPerkLVL()
+	timer.start()
 
 func _process(delta):
-	$HUD.update_hp(Player.getMaxHP(), Player.getCurrentHP())
+	$HUD.update_hp(player.hpMax, player.hpCurrent)
 
 
 func _on_RegenTimer_timeout():
-	Player.regenerate()
+	if(player.hpCurrent < player.hpMax):
+		player.hpCurrent += player.hpRegen
