@@ -17,5 +17,6 @@ position = Vector2( -11, -56 )
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="RegenTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="timeout" from="RegenTimer" to="." method="_on_RegenTimer_timeout"]

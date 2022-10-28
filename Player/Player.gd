@@ -4,9 +4,13 @@ var Projectile = preload("res://Weapons/Projectile.tscn")
 
 onready var end_of_gun = $Blade
 
-onready var head = $"%Head" setget setHead
-onready var foot = $"%Foot" setget setFoot
-onready var body = $"%Body" setget setBody
+onready var head = $Sprite/Head setget setHead
+onready var foot = $Sprite/Foot setget setFoot
+onready var body = $Sprite/Body setget setBody
+
+onready var headName = head.name setget setHeadName,getHeadName
+onready var bodyName = body.name setget setBodyName,getBodyName
+onready var footName = foot.name setget setFootName,getFootName
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
 onready var hpCurrent = hpMax setget setHpCurrent,getHpCurrent
@@ -19,9 +23,7 @@ var head_array = []
 var perk_lvl = 6
 
 func _ready():
-	print(head.texture)
-	print(foot.texture)
-	print(body.texture)
+	print_tree()
 	pass
 
 
@@ -52,61 +54,66 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func setHead(value):
+	(get_node("Sprite/" + head.name)).queue_free()
 	head = value
-	value.name = "Head"
-	$"%Head".queue_free()
-	$Sprite.add_child(value, true)
+	$Sprite.add_child(value)
 
 func setBody(value):
+	(get_node("Sprite/" + body.name)).queue_free()
 	body = value
-	value.name = "Body"
-	$"%Body".queue_free()
-	$Sprite.add_child(value, true)
+	$Sprite.add_child(value)
 
 func setFoot(value):
+	(get_node("Sprite/" + foot.name)).queue_free()
 	foot = value
-	value.name = "Foot"
-	$"%Foot".queue_free()
-	$Sprite.add_child(value, true)
+	$Sprite.add_child(value)
+
+func setHeadName(value):
+	head.name = value
+
+func getHeadName():
+	return head.name
+
+func setBodyName(value):
+	body.name = value
+
+func getBodyName():
+	return body.name
+
+func setFootName(value):
+	foot.name = value
+
+func getFootName():
+	return foot.name
 
 func getHpMax():
-	print("player getHpMax")
 	return head.hpMax
 
 func setHpMax(value):
-	print("player setHpMax")
 	head.hpMax = value
 	
 func getHpCurrent():
-	print("player getHpCurrent")
 	return hpCurrent
 
 func setHpCurrent(value):
-	print("player setHpCurrent")
 	hpCurrent = value
 
 func getHpBody():
-	print("player getHpBody")
 	return body.hpBody
 
 func setHpBody(value):
-	print("player setHpBody")
 	body.hpBody = value
 
 func getHpRegen():
-	print("player getHpRegen")
 	return body.hpRegen
 
 func setHpRegen(value):
-	print("player setHpRegen")
 	body.hpRegen = value
 
 func getMoveSpeed():
-	print("player getMoveSpeed")
 	return foot.moveSpeed
 
 func setMoveSpeed(value):
-	print("player setMoveSpeed")
 	foot.moveSpeed = value
 
 func getPerkLVL():

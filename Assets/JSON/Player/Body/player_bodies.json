@@ -1,0 +1,17 @@
+{
+  "empty": {
+    "texture": "res://Assets/Player/Body/empty.png",
+    "hpBody": 100,
+    "hpRegen": 1
+  },
+  "blackANDwhite": {
+    "texture": "res://Assets/Player/Body/body.png",
+    "hpBody": 100500,
+    "hpRegen": 69
+  },
+  "cat": {
+    "texture": "res://Assets/Player/Body/cat.png",
+    "hpBody": 77,
+    "hpRegen": 77
+  }
+}
