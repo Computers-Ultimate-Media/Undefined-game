@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-var Projectile = preload("res://Weapons/Projectile.tscn")
-
-onready var end_of_gun = $Blade
-
 onready var head = $Sprite/Head setget setHead
 onready var foot = $Sprite/Foot setget setFoot
 onready var body = $Sprite/Body setget setBody
@@ -18,9 +14,6 @@ onready var hpBody = body.hpBody setget setHpBody,getHpBody
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 
-var head_array = []
-
-var perk_lvl = 6
 
 func _ready():
 	print_tree()
@@ -43,15 +36,6 @@ func _process(delta):
 		position += velocity * delta
 		
 	look_at(get_global_mouse_position())
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
-		var projectile = Projectile.instance()
-		var direction = (end_of_gun.get_node("ShootPoint").global_position - global_position).normalized()
-		projectile.set_direction(direction) 
-		projectile.global_position = end_of_gun.global_position
-		get_parent().add_child(projectile)
-
 
 func setHead(value):
 	(get_node("Sprite/" + head.name)).queue_free()
@@ -115,6 +99,3 @@ func getMoveSpeed():
 
 func setMoveSpeed(value):
 	foot.moveSpeed = value
-
-func getPerkLVL():
-	return perk_lvl

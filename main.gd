@@ -11,7 +11,7 @@ func _ready():
 	player = $Player
 	timer = $RegenTimer
 	
-	timer.wait_time = 10 - player.getPerkLVL()
+	timer.wait_time = 10
 	timer.start()
 
 
@@ -53,9 +53,7 @@ func _process(delta):
 
 
 func _on_RegenTimer_timeout():
-	if(player.hpCurrent < player.hpMax):
-		player.hpCurrent += player.hpRegen
-	$HUD.update_hp(player.hpMax, player.hpCurrent)
+	pass
 
 
 func read_from_JSON(path):
