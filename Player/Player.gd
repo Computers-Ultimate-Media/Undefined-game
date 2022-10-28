@@ -5,14 +5,14 @@ var Projectile = preload("res://Weapons/Projectile.tscn")
 onready var end_of_gun = $Blade
 
 onready var head = $"%Head" setget setHead
-onready var feet = $"%Feet" setget setFeet
+onready var foot = $"%Foot" setget setFoot
 onready var body = $"%Body" setget setBody
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
 onready var hpCurrent = hpMax setget setHpCurrent,getHpCurrent
 onready var hpBody = body.hpBody setget setHpBody,getHpBody
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
-onready var moveSpeed = feet.moveSpeed setget setMoveSpeed,getMoveSpeed
+onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 
 var head_array = []
 
@@ -20,7 +20,7 @@ var perk_lvl = 6
 
 func _ready():
 	print(head.texture)
-	print(feet.texture)
+	print(foot.texture)
 	print(body.texture)
 	pass
 
@@ -63,10 +63,10 @@ func setBody(value):
 	$"%Body".queue_free()
 	$Sprite.add_child(value, true)
 
-func setFeet(value):
-	feet = value
-	value.name = "Feet"
-	$"%Feet".queue_free()
+func setFoot(value):
+	foot = value
+	value.name = "Foot"
+	$"%Foot".queue_free()
 	$Sprite.add_child(value, true)
 
 func getHpMax():
@@ -103,11 +103,11 @@ func setHpRegen(value):
 
 func getMoveSpeed():
 	print("player getMoveSpeed")
-	return feet.moveSpeed
+	return foot.moveSpeed
 
 func setMoveSpeed(value):
 	print("player setMoveSpeed")
-	feet.moveSpeed = value
+	foot.moveSpeed = value
 
 func getPerkLVL():
 	return perk_lvl

@@ -3,12 +3,12 @@
 [ext_resource path="res://Assets/Player/icon.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Weapons/Blade.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Player/Feet/Feet.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/Foot/Foot.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Player/Head/head.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Player/Body/body.png" type="Texture" id=6]
 [ext_resource path="res://Player/Head.gd" type="Script" id=7]
 [ext_resource path="res://Player/Body.gd" type="Script" id=8]
-[ext_resource path="res://Player/Feet.gd" type="Script" id=9]
+[ext_resource path="res://Player/Foot.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -37,7 +37,7 @@ unique_name_in_owner = true
 texture = ExtResource( 6 )
 script = ExtResource( 8 )
 
-[node name="Feet" type="Sprite" parent="Sprite"]
+[node name="Foot" type="Sprite" parent="Sprite"]
 unique_name_in_owner = true
 texture = ExtResource( 4 )
 script = ExtResource( 9 )

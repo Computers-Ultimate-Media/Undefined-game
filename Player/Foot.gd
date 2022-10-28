@@ -6,9 +6,9 @@ func _ready():
 	pass
 
 func getMoveSpeed():
-	print("feet getMoveSpeed")
+	print("foot getMoveSpeed")
 	return moveSpeed
 
 func setMoveSpeed(value):
-	print("feet setMoveSpeed")
+	print("foot setMoveSpeed")
 	moveSpeed = value
