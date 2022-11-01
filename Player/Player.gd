@@ -14,11 +14,17 @@ onready var hpCurrent = hpMax setget setHpCurrent,getHpCurrent
 onready var hpBody = body.hpBody setget setHpBody,getHpBody
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
+onready var coins = 100 setget setCoins, getCoins
 
 var head_array = []
 
 var perk_lvl = 6
 
+func setCoins(value):
+	coins = value
+func getCoins():
+	return coins
+	
 func _ready():
 	print_tree()
 	pass

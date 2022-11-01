@@ -1,19 +1,13 @@
 extends Node2D
 
-var player
-var timer
+onready var player = $Player
 var bodies = []
 var heads = []
 var feet = []
 var i = 0
 
 func _ready():
-	player = $Player
-	timer = $RegenTimer
-	
-	timer.wait_time = 10 - player.getPerkLVL()
-	timer.start()
-
+	pass
 
 #	var dict_heads = read_from_JSON("res://Assets/JSON/Player/Head/player_heads.json")
 #	for key in dict_heads.keys():
@@ -47,17 +41,8 @@ func _ready():
 #
 #		feet.append(foot)
 
-
 func _process(delta):
-	pass
-
-
-func _on_RegenTimer_timeout():
-	pass
-#	if(player.hpCurrent < player.hpMax):
-#		player.hpCurrent += player.hpRegen
-#	$HUD.update_hp(player.hpMax, player.hpCurrent)
-
+	$HUD.update(player)
 
 func read_from_JSON(path):
 	var file = File.new()
