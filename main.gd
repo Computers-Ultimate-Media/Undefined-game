@@ -53,9 +53,10 @@ func _process(delta):
 
 
 func _on_RegenTimer_timeout():
-	if(player.hpCurrent < player.hpMax):
-		player.hpCurrent += player.hpRegen
-	$HUD.update_hp(player.hpMax, player.hpCurrent)
+	pass
+#	if(player.hpCurrent < player.hpMax):
+#		player.hpCurrent += player.hpRegen
+#	$HUD.update_hp(player.hpMax, player.hpCurrent)
 
 
 func read_from_JSON(path):

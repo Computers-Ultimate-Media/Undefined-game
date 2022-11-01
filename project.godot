@@ -18,16 +18,10 @@ _global_script_classes=[ {
 "class": "Projectile",
 "language": "GDScript",
 "path": "res://Weapons/Projectile.gd"
-}, {
-"base": "Node",
-"class": "Weapon",
-"language": "GDScript",
-"path": "res://Weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
-"Projectile": "",
-"Weapon": ""
+"Projectile": ""
 }
 
 [application]
