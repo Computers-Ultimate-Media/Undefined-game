@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var player = $Player
+
 var bodies = []
 var heads = []
 var feet = []
@@ -42,7 +42,7 @@ func _ready():
 #		feet.append(foot)
 
 func _process(delta):
-	$HUD.update(player)
+	pass
 
 func read_from_JSON(path):
 	var file = File.new()

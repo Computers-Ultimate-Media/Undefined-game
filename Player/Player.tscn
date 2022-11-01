@@ -123,4 +123,6 @@ __meta__ = {
 
 [node name="Timer" type="Node" parent="."]
 
-[node name="HP regen" type="Timer" parent="Timer"]
+[node name="HP" type="Timer" parent="Timer"]
+
+[connection signal="timeout" from="Timer/HP" to="." method="_on_HP_timeout"]

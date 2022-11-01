@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_stats_changed
+
 onready var head = $Sprite/Head setget setHead
 onready var foot = $Sprite/Foot setget setFoot
 onready var body = $Sprite/Body setget setBody
@@ -10,7 +12,7 @@ onready var bodyName = body.name setget setBodyName,getBodyName
 onready var footName = foot.name setget setFootName,getFootName
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
-onready var hpCurrent = hpMax setget setHpCurrent,getHpCurrent
+onready var hpCurrent = 50 setget setHpCurrent,getHpCurrent
 onready var hpBody = body.hpBody setget setHpBody,getHpBody
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
@@ -19,6 +21,7 @@ onready var coins = 100 setget setCoins, getCoins
 var head_array = []
 
 var perk_lvl = 6
+var can_regenerate
 
 func setCoins(value):
 	coins = value
@@ -26,10 +29,26 @@ func getCoins():
 	return coins
 	
 func _ready():
-	print_tree()
-	pass
+	#init emit signal
+	emit_signal("player_stats_changed", self)
+	
+	$Timer/HP.wait_time = 2
+	player_damaged()
+	
+func player_damaged():
+	$Timer/HP.start()
 
-func _process(delta):	
+func player_regenerate(hpRegen):
+	#todo: regeneration
+	if(hpMax - hpCurrent > 0 && can_regenerate):
+		hpCurrent += hpRegen
+		emit_signal("player_stats_changed", self)
+		
+func _on_HP_timeout():
+	can_regenerate = true
+	player_regenerate(hpRegen)
+
+func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		$Sprite.flip_h = false
@@ -123,3 +142,4 @@ func setMoveSpeed(value):
 
 func getPerkLVL():
 	return perk_lvl
+
