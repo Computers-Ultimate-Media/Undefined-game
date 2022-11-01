@@ -14,4 +14,4 @@ region_enabled = true
 region_rect = Rect2( 80, 0, 31, 15 )
 
 [node name="ShootPoint" type="Position2D" parent="."]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -26 )

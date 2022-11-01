@@ -38,5 +38,6 @@ func _on_KillTimer_timeout():
 
 func _on_Projectile_body_entered(body):
 	if body.name != "Player":
-		body.queue_free()
+		if body.name == "Enemy":
+			body.queue_free()
 		queue_free()
