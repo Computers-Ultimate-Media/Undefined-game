@@ -35,7 +35,6 @@ func spawn_Enemies():
 			instance.position = Vector2(0,random.randi_range(0, 100)) 
 
 func on_Enemy_death():
-	print_debug("enemy dead")
 	
 	var enemies = $Enemies.get_children()
 	if enemies.empty():
@@ -45,19 +44,16 @@ func on_Enemy_death():
 	pass
 
 func _on_RoomArea_body_entered(body:KinematicBody2D):
-	print_debug(body.name)
-	if( not body.name.begins_with("Player")):
+	if (not body.name.begins_with("Player")):
 		return
 	
-	print_debug(body)
 	match room_state:
 		roomState.UNVISITED:
 			spawn_Enemies()
 			setDoors(false)
-			room_state= roomState.ENEMIES
+			room_state = roomState.ENEMIES
 			pass
 		roomState.ENEMIES:
-			print_debug("error")
 			pass
 		roomState.CLEARED:
 			pass
