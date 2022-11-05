@@ -1,16 +1,16 @@
 extends Sprite
 
-export var hpBody = 100 setget setHpBody,getHpBody
+export var armorMax = 100 setget setArmorMax,getArmorMax
 export var hpRegen = 1 setget setHpRegen,getHpRegen
 
 func _ready():
 	pass
 
-func getHpBody():
-	return hpBody
+func getArmorMax():
+	return armorMax
 
-func setHpBody(value):
-	hpBody = value
+func setArmorMax(value):
+	armorMax = value
 
 func getHpRegen():
 	return hpRegen

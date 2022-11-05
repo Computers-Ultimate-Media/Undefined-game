@@ -13,40 +13,25 @@ onready var footName = foot.name setget setFootName,getFootName
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
 onready var hpCurrent = 50 setget setHpCurrent,getHpCurrent
-onready var hpBody = body.hpBody setget setHpBody,getHpBody
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
+
+onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
+onready var armorCurrent = 50 setget setArmorCurrent,getArmorCurrent
+
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 onready var coins = 100 setget setCoins, getCoins
 
 var head_array = []
-
 var perk_lvl = 6
+
 var can_regenerate
 
-func setCoins(value):
-	coins = value
-func getCoins():
-	return coins
-	
 func _ready():
 	#init emit signal
 	emit_signal("player_stats_changed", self)
 	
 	$Timer/HP.wait_time = 2
 	player_damaged()
-	
-func player_damaged():
-	$Timer/HP.start()
-
-func player_regenerate(hpRegen):
-	#todo: regeneration
-	if(hpMax - hpCurrent > 0 && can_regenerate):
-		hpCurrent += hpRegen
-		emit_signal("player_stats_changed", self)
-		
-func _on_HP_timeout():
-	can_regenerate = true
-	player_regenerate(hpRegen)
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -72,6 +57,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
 
+func player_damaged():
+	$Timer/HP.start()
+
+func player_regenerate(hpRegen):
+	#todo: regeneration
+	if(hpMax - hpCurrent > 0 && can_regenerate):
+		hpCurrent += hpRegen
+		emit_signal("player_stats_changed", self)
+		
+func _on_HP_timeout():
+	can_regenerate = true
+	player_regenerate(hpRegen)
+	
+func setCoins(value):
+	coins = value
+	
+func getCoins():
+	return coins
+	
 func setWeapon(value):
 	weapon.queue_free()
 	weapon = value
@@ -122,11 +126,17 @@ func getHpCurrent():
 func setHpCurrent(value):
 	hpCurrent = value
 
-func getHpBody():
-	return body.hpBody
+func getArmorCurrent():
+	return armorCurrent
 
-func setHpBody(value):
-	body.hpBody = value
+func setArmorCurrent(value):
+	armorCurrent = value
+	
+func getArmorMax():
+	return body.armorMax
+
+func setArmorMax(value):
+	body.armorMax = value
 
 func getHpRegen():
 	return body.hpRegen
