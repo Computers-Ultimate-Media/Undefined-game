@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TDS"
-run/main_scene="res://main.tscn"
+run/main_scene="res://HUD/StartScreen/StartScreen.tscn"
 config/icon="res://Assets/Player/icon.png"
 
 [display]
