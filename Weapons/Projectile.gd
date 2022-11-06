@@ -20,9 +20,12 @@ func _ready():
 	scale *= 0.2
 	timer.start(max_distance_shot / speed)
 	
-func attack(enemy):
-	pass
-
+func attack(enemy: Enemy):
+	enemy.hit(rand_range(min_damage, max_damage))
+	print(enemy.health)
+	if(enemy.health <= 0):
+		enemy.death()
+	
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed
@@ -32,12 +35,11 @@ func set_direction(vector: Vector2):
 	direction = vector
 	rotation += direction.angle()
 
-
 func _on_KillTimer_timeout():
 	queue_free()
 
 func _on_Projectile_body_entered(body):
 	if body.name != "Player":
-		if body.name == "Enemy":
-			body.queue_free()
+		if body.name.begins_with("Enemy"):
+			attack(body)
 		queue_free()
