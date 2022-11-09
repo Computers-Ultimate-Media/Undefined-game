@@ -34,7 +34,6 @@ _global_script_class_icons={
 
 config/name="TDS"
 run/main_scene="res://HUD/StartScreen/StartScreen.tscn"
-config/icon="res://Assets/Player/icon.png"
 
 [display]
 
@@ -49,6 +48,7 @@ version_control_plugin_name="GitAPI"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom_font="res://Fonts/our_font.tres"
 
 [input]
 
