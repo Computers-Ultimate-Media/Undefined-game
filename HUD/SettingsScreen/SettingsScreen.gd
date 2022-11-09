@@ -15,19 +15,23 @@ var settings_dict = {
 
 func _ready():
 	settings_dict = read_from_JSON("res://Assets/JSON/Game settings/settings.json")
-	$CheckBox.pressed = settings_dict["fullscreen"]
 	
-func _on_CheckBox_toggled(button_pressed):
-	OS.window_fullscreen = button_pressed
-	
+	$FullscreenCheck.pressed = settings_dict["fullscreen"]
+	$FpsScroll.value = settings_dict["framerate"]
+	$SoundScroll.value = settings_dict["sound_value"]
+
 func _on_ExitButton_pressed():
 	get_tree().change_scene("res://HUD/StartScreen/StartScreen.tscn")
-	settings_dict["fullscreen"] = $CheckBox.pressed
+	settings_dict["fullscreen"] = $FullscreenCheck.pressed
 	settings_dict["sound_value"] = sound_value
 	settings_dict["framerate"] = framerate
 	
 	_save_to_JSON(settings_dict, path)
 	
+	Engine.target_fps = framerate
+	OS.window_fullscreen = fullscreen
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), sound_value)
+
 func _save_to_JSON(dict, path):
 		var file = File.new()
 		if file.file_exists(path):
@@ -36,7 +40,7 @@ func _save_to_JSON(dict, path):
 			file.close()
 		else:
 			printerr("Invalid path given")
-			
+
 func read_from_JSON(path):
 	var file = File.new()
 	if file.file_exists(path):
@@ -46,3 +50,14 @@ func read_from_JSON(path):
 		return data
 	else:
 		printerr("Invalid path given")
+
+func _on_FpsScroll_value_changed(value):
+	$FpsScroll/Value.text = str(value) 
+	framerate = value
+
+func _on_FullscreenCheck_toggled(button_pressed):
+	fullscreen = button_pressed
+
+func _on_SoundScroll_value_changed(value):
+	$SoundScroll/Value.text = str(value) 
+	sound_value = value
