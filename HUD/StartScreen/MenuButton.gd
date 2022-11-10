@@ -10,7 +10,6 @@ func _ready():
 	new_style.set_bg_color(Color("#c6251e1e"))
 	self.set('custom_styles/panel', new_style)
 	$Label.text = title
-	
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
@@ -19,6 +18,8 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		self._on_click()
 
 func _on_click():
+	get_tree().paused = false
+	
 	match menu_num:
 		0:
 			get_tree().change_scene("res://main.tscn")
@@ -26,6 +27,10 @@ func _on_click():
 			get_tree().change_scene("res://HUD/SettingsScreen/SettingsScreen.tscn")
 		2:
 			get_tree().quit()
+		3:
+			get_tree().change_scene("res://HUD/StartScreen/StartScreen.tscn")
+		4:
+			get_tree().root.get_node("main/GamePause").visible = false
 
 
 func _on_Area2D_mouse_entered():
