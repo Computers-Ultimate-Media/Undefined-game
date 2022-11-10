@@ -2,10 +2,13 @@ extends KinematicBody2D
 
 class_name Enemy
 
-var Player
+var player = null
+
+onready var projectile 
+onready var weapon = $Blade
 
 export var speed = 1000
-var velocity : Vector2
+var velocity = Vector2.ZERO
 var last_direction = Vector2(0, 1)
 var bounce_countdown = 0
 
@@ -20,16 +23,16 @@ onready var health_bar = $HeathBar
 
 func _ready():
 	health_bar._on_max_health_updated(max_health)
-	Player = get_tree().root.get_node("main/Player")
 	
-func _process(delta):
-	pass
-
 func _physics_process(delta):
-	var player_relative_position =  Player.position - global_position 
-	velocity = player_relative_position.normalized()
-	var movement = velocity * speed * delta
-	move_and_slide(movement)
+	velocity = Vector2.ZERO
+	if player != null:
+		velocity = position.direction_to(player.position) * speed
+	else:
+		velocity = Vector2.ZERO
+		
+	velocity = velocity.normalized()
+	velocity = move_and_collide(velocity)
 
 func hit(damage):
 	health -= damage
@@ -41,7 +44,23 @@ func death():
 	emit_signal("enemy_dead")
 
 func _on_Enemy_enemy_dead():
-	Player.setCoins(Player.getCoins() + 10)
+	player.setCoins(player.getCoins() + 10)
 
 func _on_Enemy_enemy_hit():
 	health_bar._on_health_updated(health, 0)
+
+func _on_PlayerFindArea_body_entered(body):
+	if body.name == "Player":
+		print(body.name)
+		player = body
+
+func _on_PlayerFindArea_body_exited(body):
+	player = null
+
+func _on_ShootTimer_timeout():
+	shoot()
+
+func shoot():
+	if player != null:
+		weapon.shoot()
+		$ShootTimer.wait_time = 1
