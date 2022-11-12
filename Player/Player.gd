@@ -14,11 +14,16 @@ onready var hpBody = body.hpBody setget setHpBody,getHpBody
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 
+signal open_inventory
 
 func _ready():
 	print_tree()
 	pass
 
+
+func _input(event):
+	if event.is_action_pressed("open_inventory"):
+		emit_signal("open_inventory", self)
 
 func _process(delta):
 	var velocity = Vector2.ZERO

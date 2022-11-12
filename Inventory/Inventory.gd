@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 var bodies = []
 var heads = []
@@ -47,3 +47,9 @@ func read_from_JSON(path):
 		return data
 	else:
 		printerr("Invalid path given")
+
+
+func _on_Player_open_inventory(player):
+	self.visible = !(self.visible)
+
+
