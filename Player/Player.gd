@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal player_stats_changed
+signal player_damaged
+signal player_dead
 
 onready var head = $Sprite/Head setget setHead
 onready var foot = $Sprite/Foot setget setFoot
@@ -12,7 +14,7 @@ onready var bodyName = body.name setget setBodyName,getBodyName
 onready var footName = foot.name setget setFootName,getFootName
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
-onready var hpCurrent = 50 setget setHpCurrent,getHpCurrent
+onready var health = 50 setget setHpCurrent,getHpCurrent
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
@@ -27,11 +29,9 @@ var perk_lvl = 6
 var can_regenerate
 
 func _ready():
-	#init emit signal
+	player_regenerate(hpRegen)
 	emit_signal("player_stats_changed", self)
-	
 	$Timer/HP.wait_time = 2
-	player_damaged()
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -57,13 +57,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
 
-func player_damaged():
-	$Timer/HP.start()
-
 func player_regenerate(hpRegen):
-	#todo: regeneration
-	if(hpMax - hpCurrent > 0 && can_regenerate):
-		hpCurrent += hpRegen
+	if(hpMax - health > 0 && can_regenerate):
+		health += hpRegen
 		emit_signal("player_stats_changed", self)
 		
 func _on_HP_timeout():
@@ -121,10 +117,10 @@ func setHpMax(value):
 	head.hpMax = value
 	
 func getHpCurrent():
-	return hpCurrent
+	return health
 
 func setHpCurrent(value):
-	hpCurrent = value
+	health = value
 
 func getArmorCurrent():
 	return armorCurrent
@@ -153,3 +149,14 @@ func setMoveSpeed(value):
 func getPerkLVL():
 	return perk_lvl
 
+func hit(damage):
+	$Timer/HP.start()
+	health -= damage
+	emit_signal("player_damaged")
+
+func death():
+	self.queue_free()
+	emit_signal("player_dead")
+
+func _on_Player_player_damaged():
+	emit_signal("player_stats_changed", self)

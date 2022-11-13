@@ -85,6 +85,8 @@ script = ExtResource( 2 )
 [node name="Blade" parent="." instance=ExtResource( 3 )]
 position = Vector2( -8, 16 )
 z_index = 1
+weapon_owner = "Player"
+max_damage = 50
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
@@ -125,4 +127,5 @@ __meta__ = {
 
 [node name="HP" type="Timer" parent="Timer"]
 
+[connection signal="player_damaged" from="." to="." method="_on_Player_player_damaged"]
 [connection signal="timeout" from="Timer/HP" to="." method="_on_HP_timeout"]

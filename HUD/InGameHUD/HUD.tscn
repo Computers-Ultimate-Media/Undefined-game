@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/InGameHUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Assets/HUD/health.png" type="Texture" id=2]
 [ext_resource path="res://Assets/HUD/sheild.png" type="Texture" id=3]
 [ext_resource path="res://Assets/HUD/coin.png" type="Texture" id=4]
+[ext_resource path="res://HUD/GameOverHUD/GameOver.tscn" type="PackedScene" id=5]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="HP" type="Node" parent="."]
+[node name="GameOver" parent="." instance=ExtResource( 5 )]
+pause_mode = 2
+visible = false
+
+[node name="HP" type="Node2D" parent="."]
 
 [node name="Icon" type="Sprite" parent="HP"]
 position = Vector2( 50, 550 )
@@ -18,16 +23,16 @@ texture = ExtResource( 2 )
 [node name="Label" type="Label" parent="HP"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 70.0
-margin_top = -60.0
-margin_right = 106.0
-margin_bottom = -40.0
+margin_left = 75.0
+margin_top = 540.0
+margin_right = 111.0
+margin_bottom = 560.0
 text = "HP_"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="Armor" type="Node" parent="."]
+[node name="Armor" type="Node2D" parent="."]
 
 [node name="Icon" type="Sprite" parent="Armor"]
 position = Vector2( 170, 550 )
@@ -39,19 +44,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -322.0
-margin_top = -60.0
-margin_right = -286.0
-margin_bottom = -40.0
+margin_left = 195.0
+margin_top = 540.0
+margin_right = 231.0
+margin_bottom = 560.0
 text = "AR_"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="Coin" type="Node" parent="."]
+[node name="Coin" type="Node2D" parent="."]
 
 [node name="Icon" type="Sprite" parent="Coin"]
-position = Vector2( 900, 40 )
+position = Vector2( 900, 50 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
 
@@ -60,10 +65,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 408.0
-margin_top = -570.0
-margin_right = 460.0
-margin_bottom = -550.0
+margin_left = 920.0
+margin_top = 40.0
+margin_right = 972.0
+margin_bottom = 60.0
 text = "COIN_"
 align = 1
 valign = 1

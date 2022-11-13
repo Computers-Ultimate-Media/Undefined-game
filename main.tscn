@@ -31,4 +31,5 @@ position = Vector2( -361, -21 )
 [node name="Enemy3" parent="." instance=ExtResource( 5 )]
 position = Vector2( -314, 94 )
 
+[connection signal="player_dead" from="Player" to="HUD" method="_on_Player_player_dead"]
 [connection signal="player_stats_changed" from="Player" to="HUD" method="_on_Player_player_stats_changed"]
