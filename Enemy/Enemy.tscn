@@ -9,7 +9,7 @@
 radius = 32.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 314.006
+radius = 483.104
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 5
@@ -19,6 +19,7 @@ script = ExtResource( 1 )
 [node name="Blade" parent="." instance=ExtResource( 4 )]
 position = Vector2( 47, 12 )
 z_index = 1
+weapon_owner = "Enemy"
 
 [node name="HeathBar" parent="." instance=ExtResource( 3 )]
 margin_left = -35.0
@@ -36,13 +37,13 @@ shape = SubResource( 1 )
 [node name="PlayerFindArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFindArea"]
-visible = false
 shape = SubResource( 2 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 
 [connection signal="enemy_dead" from="." to="." method="_on_Enemy_enemy_dead"]
 [connection signal="enemy_hit" from="." to="." method="_on_Enemy_enemy_hit"]
+[connection signal="enemy_shoot" from="." to="." method="_on_Enemy_enemy_shoot"]
 [connection signal="body_entered" from="PlayerFindArea" to="." method="_on_PlayerFindArea_body_entered"]
 [connection signal="body_exited" from="PlayerFindArea" to="." method="_on_PlayerFindArea_body_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

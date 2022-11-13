@@ -3,11 +3,11 @@ extends KinematicBody2D
 class_name Enemy
 
 var player = null
+var target = null
 
 onready var projectile 
 onready var weapon = $Blade
 
-export var speed = 1000
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0, 1)
 var bounce_countdown = 0
@@ -15,22 +15,24 @@ var bounce_countdown = 0
 export var health = 100
 export var max_health = 100
 export var damage = 10
+export var speed = 1000
 
 signal enemy_dead;
 signal enemy_hit;
+signal enemy_shoot;
 
 onready var health_bar = $HeathBar
 
 func _ready():
+	player = get_tree().root.get_node("main/Player")
 	health_bar._on_max_health_updated(max_health)
 	
 func _physics_process(delta):
 	velocity = Vector2.ZERO
-	if player != null:
-		velocity = position.direction_to(player.position) * speed
+	if target != null:
+		velocity = position.direction_to(target.position) * speed
 	else:
 		velocity = Vector2.ZERO
-		
 	velocity = velocity.normalized()
 	velocity = move_and_collide(velocity)
 
@@ -51,16 +53,17 @@ func _on_Enemy_enemy_hit():
 
 func _on_PlayerFindArea_body_entered(body):
 	if body.name == "Player":
-		print(body.name)
-		player = body
+		target = body
+		$ShootTimer.start()
 
 func _on_PlayerFindArea_body_exited(body):
-	player = null
+	target = null
 
 func _on_ShootTimer_timeout():
-	shoot()
+	emit_signal("enemy_shoot")
 
-func shoot():
-	if player != null:
+func _on_Enemy_enemy_shoot():
+	if target != null:
+		weapon.target = target
 		weapon.shoot()
 		$ShootTimer.wait_time = 1
