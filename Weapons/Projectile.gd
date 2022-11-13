@@ -2,29 +2,27 @@ extends Node2D
 
 class_name Projectile
 
-export var weapon_owner_node_path: NodePath
-export var max_damage: int
-export var min_damage: int
+var weapon_owner setget set_weapon_owner
+var max_damage: int
+var min_damage: int
+
 export var critical_damage: int
 export var critical_damage_chance: int
 export var max_distance_shot: int = 50
 export var speed: int = 5
 
 var direction := Vector2(-1, 0) setget set_direction
-
-var weapon_owner
 onready var timer = $KillTimer
 
 func _ready():
-	rotation_degrees += 270
-	scale *= 0.2
-	timer.start(max_distance_shot / speed)
+	timer.start(max_distance_shot / speed * 3)
 	
-func attack(enemy: Enemy):
-	enemy.hit(rand_range(min_damage, max_damage))
-	print(enemy.health)
-	if(enemy.health <= 0):
-		enemy.death()
+func attack(target):
+	var current_dmg = round(rand_range(min_damage, max_damage))
+	target.hit(current_dmg)
+	queue_free()
+	if(target.health <= 0):
+		target.death()
 	
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
@@ -38,8 +36,13 @@ func set_direction(vector: Vector2):
 func _on_KillTimer_timeout():
 	queue_free()
 
+func set_weapon_owner(value):
+	weapon_owner = value
+
 func _on_Projectile_body_entered(body):
-	if body.name != "Player":
-		if body.name.begins_with("Enemy"):
-			attack(body)
+	if body.name == "TileMap_walls" \
+	or body.name == "StaticBody2D":
 		queue_free()
+	else:
+		if !body.name.begins_with(weapon_owner):
+			attack(body)
