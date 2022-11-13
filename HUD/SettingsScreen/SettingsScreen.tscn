@@ -80,7 +80,5 @@ valign = 1
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="toggled" from="FullscreenCheck" to="." method="_on_FullscreenCheck_toggled"]
-[connection signal="toggled" from="FullscreenCheck" to="." method="_on_CheckBox_toggled"]
 [connection signal="value_changed" from="FpsScroll" to="." method="_on_FpsScroll_value_changed"]
-[connection signal="value_changed" from="FpsScroll" to="." method="_on_HScrollBar_value_changed"]
 [connection signal="value_changed" from="SoundScroll" to="." method="_on_SoundScroll_value_changed"]
