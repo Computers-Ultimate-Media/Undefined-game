@@ -87,6 +87,10 @@ position = Vector2( -8, 16 )
 z_index = 1
 weapon_owner = "Player"
 max_damage = 50
+critical_damage = 20
+critical_damage_chance = 50
+max_distance_shot = 100
+speed = 20
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
@@ -109,6 +113,7 @@ script = ExtResource( 8 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 script = ExtResource( 9 )
+moveSpeed = 300
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

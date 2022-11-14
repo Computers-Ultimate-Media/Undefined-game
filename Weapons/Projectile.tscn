@@ -11,8 +11,6 @@ height = 50.0
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 1 )
-max_damage = 50
-min_damage = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.2 )
