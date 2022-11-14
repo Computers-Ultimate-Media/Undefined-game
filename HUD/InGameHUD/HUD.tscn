@@ -13,7 +13,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 visible = false
 
-[node name="HP" type="Node2D" parent="."]
+[node name="HP" type="Control" parent="."]
 
 [node name="Icon" type="Sprite" parent="HP"]
 position = Vector2( 50, 550 )
@@ -32,7 +32,7 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="Armor" type="Node2D" parent="."]
+[node name="Armor" type="Control" parent="."]
 
 [node name="Icon" type="Sprite" parent="Armor"]
 position = Vector2( 170, 550 )
@@ -53,7 +53,7 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="Coin" type="Node2D" parent="."]
+[node name="Coin" type="Control" parent="."]
 
 [node name="Icon" type="Sprite" parent="Coin"]
 position = Vector2( 900, 50 )
