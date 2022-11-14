@@ -23,6 +23,7 @@ text = "GAME OVER"
 margin_top = -50.0
 margin_bottom = -10.0
 title = "Restart"
+menu_num = 5
 
 [node name="GoToMenu" parent="." instance=ExtResource( 1 )]
 margin_top = 0.0

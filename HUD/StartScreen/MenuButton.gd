@@ -31,6 +31,8 @@ func _on_click():
 			get_tree().change_scene("res://HUD/StartScreen/StartScreen.tscn")
 		4:
 			get_tree().root.get_node("main/GamePause").visible = false
+		5:
+			get_tree().reload_current_scene()
 
 
 func _on_Area2D_mouse_entered():
