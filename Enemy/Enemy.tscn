@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Enemy/test.png" type="Texture" id=2]
@@ -8,18 +8,25 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 483.104
-
 [node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 5
 collision_mask = 9
 script = ExtResource( 1 )
+health = 100
+max_health = 100
+speed = 100
 
 [node name="Blade" parent="." instance=ExtResource( 4 )]
 position = Vector2( 47, 12 )
 z_index = 1
 weapon_owner = "Enemy"
+max_damage = 15
+critical_damage = 150
+critical_damage_chance = 30
+max_distance_shot = 100
+speed = 8
+reload_time = 2
 
 [node name="HeathBar" parent="." instance=ExtResource( 3 )]
 margin_left = -35.0
@@ -34,16 +41,9 @@ texture = ExtResource( 2 )
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="PlayerFindArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFindArea"]
-shape = SubResource( 2 )
-
 [node name="ShootTimer" type="Timer" parent="."]
 
 [connection signal="enemy_dead" from="." to="." method="_on_Enemy_enemy_dead"]
 [connection signal="enemy_hit" from="." to="." method="_on_Enemy_enemy_hit"]
 [connection signal="enemy_shoot" from="." to="." method="_on_Enemy_enemy_shoot"]
-[connection signal="body_entered" from="PlayerFindArea" to="." method="_on_PlayerFindArea_body_entered"]
-[connection signal="body_exited" from="PlayerFindArea" to="." method="_on_PlayerFindArea_body_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
