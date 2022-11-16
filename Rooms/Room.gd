@@ -3,18 +3,11 @@ class_name DungeonRoom
 
 enum roomState {UNVISITED, ENEMIES, CLEARED}
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var exits = get_tree().get_nodes_in_group("exit")
 onready var enemies = get_node("%Enemies")
 var room_state = roomState.UNVISITED 
 
 func spawn_Enemies():
-	print_debug("spawned enemies")
-
 	var enemiesToSpawn = [
 		[load("res://Enemy/Enemy.tscn"), 3]
 	]
@@ -24,11 +17,10 @@ func spawn_Enemies():
 		for i in enemy[1]:
 			var instance = enemy[0].instance()
 			enemies.call_deferred("add_child", instance)
+			instance.connect("enemy_death", self, "on_enemy_death")
 			instance.position = Vector2(0,random.randi_range(0, 100)) 
 
-# TODO: build programmatically
-func on_Enemy_death():
-	
+func on_enemy_death():
 	var enemies = $Enemies.get_children()
 	if enemies.empty():
 		setDoors(true)

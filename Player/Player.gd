@@ -14,7 +14,7 @@ onready var bodyName = body.name setget setBodyName,getBodyName
 onready var footName = foot.name setget setFootName,getFootName
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
-onready var health = 50 setget setHpCurrent,getHpCurrent
+onready var health = 5000000 setget setHpCurrent,getHpCurrent
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
@@ -59,7 +59,7 @@ func _process(delta):
 		
 func _unhandled_input(event: InputEvent) -> void:
 
-  if event.is_action_pressed("scroll_up"):
+	if event.is_action_pressed("scroll_up"):
 		$Camera2D.zoom *= 1.1
 	if event.is_action_pressed("scroll_down"):
 		$Camera2D.zoom *= 0.9

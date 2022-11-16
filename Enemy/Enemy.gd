@@ -21,6 +21,8 @@ export var health : int
 export var max_health : int
 export var speed : int
 
+signal enemy_death
+
 func _ready():
 	shooting_time = weapon.get_reload_time()
 	shooting_distance = weapon.get_shooting_distance()
@@ -61,6 +63,7 @@ func hit(damage):
 
 
 func death():
+	emit_signal("enemy_death")
 	self.queue_free()
 	player.setCoins(player.getCoins() + 10)
 
@@ -72,3 +75,5 @@ func enemy_shoot():
 		weapon.target = target
 		weapon.shoot()
 		$ShootTimer.wait_time = shooting_time
+
+

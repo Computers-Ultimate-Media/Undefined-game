@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "DungeonRoom",
+"language": "GDScript",
+"path": "res://Rooms/Room.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -19,6 +24,11 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
+"base": "Node2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Weapons/Projectile.gd"
+}, {
 "base": "Reference",
 "class": "RoomData",
 "language": "GDScript",
@@ -28,20 +38,20 @@ _global_script_classes=[ {
 "class": "RoomDataHolder",
 "language": "GDScript",
 "path": "res://Map/RoomDataHolder.gd"
-} ]
-_global_script_class_icons={
-"GitAPI": "",
-"RoomData": "",
-"RoomDataHolder": ""
+}, {
 "base": "Node2D",
-"class": "Projectile",
+"class": "RoomExit",
 "language": "GDScript",
-"path": "res://Weapons/Projectile.gd"
+"path": "res://Rooms/RoomExit.gd"
 } ]
 _global_script_class_icons={
+"DungeonRoom": "",
 "Enemy": "",
 "GitAPI": "",
-"Projectile": ""
+"Projectile": "",
+"RoomData": "",
+"RoomDataHolder": "",
+"RoomExit": ""
 }
 
 [application]
@@ -58,6 +68,15 @@ window/stretch/aspect="keep"
 
 version_control_autoload_on_startup=true
 version_control_plugin_name="GitAPI"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
+[global]
+
+"шрифт"=false
+font=false
 
 [gui]
 
@@ -99,6 +118,8 @@ scroll_down={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 shoot={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)

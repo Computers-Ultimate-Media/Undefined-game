@@ -40,5 +40,5 @@ func _on_Projectile_body_entered(body):
 	or body.name == "StaticBody2D":
 		queue_free()
 	else:
-		if !body.name.begins_with(weapon_owner):
+		if !body.name.begins_with(weapon_owner) && !body.name.begins_with("@"+weapon_owner) :
 			attack(body)

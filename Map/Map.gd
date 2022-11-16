@@ -4,7 +4,7 @@ const ROOM_SPREAD = 800
 const SIZE = 50
 const MAX_DIST = 4
 
-export var ROOMS = 20
+export var ROOMS = 0
 
 var rng = RandomNumberGenerator.new()
 var roomDataHolder = RoomDataHolder.new()
@@ -29,14 +29,14 @@ func gen_map():
 	
 	# start of random walk 	
 	var cur_rooms = 0
-	while(cur_rooms<ROOMS):
+	while(cur_rooms<=ROOMS):
 		var pos = select_random_pos() # where to start
 		var direction = select_random_direction() # where to go
 		var dist = clamp(select_random_length(),0, ROOMS) # how far to go
 		var mem = dist+cur_rooms
 		# moving in random direction
 		# while not maxed out rooms
-		while (cur_rooms<mem ):
+		while (cur_rooms<=mem ):
 			pos = pos+direction
 			
 			# until hit another room
@@ -68,8 +68,8 @@ func set_corridors():
 			
 				var dir_one : Vector2 = (pos-target_pos)
 				var dir_two = dir_one.rotated(PI)
-				var exit_1 = one.get_exit(dir_one)
-				var exit_2 = two.get_exit(dir_two)
+				var exit_1 = one.get_exit(dir_two)
+				var exit_2 = two.get_exit(dir_one)
 				RoomExit.connect_exits(exit_1, exit_2)
 
 func spawn_rooms():
@@ -106,7 +106,6 @@ func select_random_length():
 
 func select_random_direction():
 	var r = rng.randi_range(0,3)
-	print_debug(r)
 	match r:
 		0:
 			return Vector2.RIGHT
