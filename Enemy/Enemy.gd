@@ -37,7 +37,7 @@ func _process(delta):
 			velocity = Vector2.ZERO
 			
 		if($ShootTimer.is_stopped()):
-			emit_signal("enemy_shoot")
+			enemy_shoot()
 			$ShootTimer.start()
 	else:
 		velocity = Vector2.ZERO
@@ -50,7 +50,8 @@ func _process(delta):
 func hit(damage):
 	var text = floating_text.instance()
 	text.amount = damage
-	add_child(text)
+	text.position = self.position
+	get_tree().root.add_child(text)
 	
 	health -= damage
 	health_bar._on_health_updated(health, 0)

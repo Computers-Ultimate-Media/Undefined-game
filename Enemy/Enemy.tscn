@@ -43,7 +43,4 @@ shape = SubResource( 1 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 
-[connection signal="enemy_dead" from="." to="." method="_on_Enemy_enemy_dead"]
-[connection signal="enemy_hit" from="." to="." method="_on_Enemy_enemy_hit"]
-[connection signal="enemy_shoot" from="." to="." method="_on_Enemy_enemy_shoot"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
