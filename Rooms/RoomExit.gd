@@ -1,27 +1,30 @@
 extends Node2D
+class_name RoomExit
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var state = false setget set_state
+var target : Vector2
 
 func setOpen(state:bool):
-	var collisionShape2D = get_node("%CollisionShape2D") as CollisionShape2D
-	collisionShape2D.set_deferred("disabled", state)
-	print_debug(state)
 	
-	if(state):
-		$Sprite.modulate = Color(1,0,0,1)
-	else:
-		$Sprite.modulate = Color(1,0,0,1)
+	if (not target == null):
+		$Sprite.visible = !state
+		$StaticBody2D/CollisionShape2D.set_deferred("disabled", state)
+
+
+func teleport(node):
+	node.position = target
+
+func _on_Node2D_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if !($StaticBody2D/CollisionShape2D.disabled):
+		teleport(body)
+	pass
+
+func set_state(_state):
+	state = _state
+
+static func connect_exits(ex1:RoomExit,ex2:RoomExit):
+	var pos1 = ex1.get_node("TeleportPosition").global_position
+	var pos2 = ex2.get_node("TeleportPosition").global_position
+	ex1.target = pos2
+	ex2.target = pos1
 	
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

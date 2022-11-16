@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 class_name Enemy
 
+
 var player = null
 var target = null
 
@@ -27,6 +28,7 @@ func _ready():
 	health_bar._on_max_health_updated(max_health)
 
 func _process(delta):
+
 	velocity = Vector2.ZERO
 	
 	if (self.global_position.distance_to(player.global_position)) < 350:
@@ -56,6 +58,7 @@ func hit(damage):
 	health -= damage
 	health_bar._on_health_updated(health, 0)
 	health_bar._display_health_bar(true)
+
 
 func death():
 	self.queue_free()

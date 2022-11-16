@@ -1,0 +1,148 @@
+extends Node2D
+
+const ROOM_SPREAD = 800
+const SIZE = 50
+const MAX_DIST = 4
+
+export var ROOMS = 20
+
+var rng = RandomNumberGenerator.new()
+var roomDataHolder = RoomDataHolder.new()
+var rooms = []
+var map = []
+var corridors = []
+
+func _ready():
+	rng.randomize()
+	
+	gen_map()
+	spawn_rooms()
+	set_corridors()
+
+
+func gen_map():
+	map = resize(SIZE, SIZE)
+	rooms = resize(SIZE, SIZE)
+	
+	var start : Vector2 = Vector2(SIZE/2, SIZE/2);
+	map[start.x][start.y] = -1
+	
+	# start of random walk 	
+	var cur_rooms = 0
+	while(cur_rooms<ROOMS):
+		var pos = select_random_pos() # where to start
+		var direction = select_random_direction() # where to go
+		var dist = clamp(select_random_length(),0, ROOMS) # how far to go
+		var mem = dist+cur_rooms
+		# moving in random direction
+		# while not maxed out rooms
+		while (cur_rooms<mem ):
+			pos = pos+direction
+			
+			# until hit another room
+			if(get(pos) != 0):
+				# with a small chance create corridor between them
+				# and start again
+				if(randf()<0.5):
+					corridors.append([pos, pos-direction])
+					break
+			cur_rooms += 1
+			# create a room
+			var random_room = select_random_room()
+			corridors.append([pos, pos-direction])
+			map[pos.x][pos.y] = random_room
+
+func set_corridors():
+	for i in range(SIZE-1):
+		for j in range(SIZE-1):
+			var id = map[i][j]
+			if (id==-1):
+				continue
+			var pos = Vector2(i,j)
+			var target_poss = find_mem(i,j)
+			
+			var one = rooms[i][j]
+			
+			for target_pos in target_poss:
+				var two = rooms[target_pos.x][target_pos.y]
+			
+				var dir_one : Vector2 = (pos-target_pos)
+				var dir_two = dir_one.rotated(PI)
+				var exit_1 = one.get_exit(dir_one)
+				var exit_2 = two.get_exit(dir_two)
+				RoomExit.connect_exits(exit_1, exit_2)
+
+func spawn_rooms():
+	for i in range(SIZE-1):
+		for j in range(SIZE-1):
+			var id = map[i][j]
+			if(id == 0):
+				continue
+			
+			var room
+			if (Vector2(i,j)==Vector2(SIZE/2, SIZE/2)):
+				room = load_room(roomDataHolder.starting_room)
+			else:
+				room = load_room(roomDataHolder.rooms[id])
+			
+			self.add_child(room)
+			room.position = Vector2(ROOM_SPREAD*i, ROOM_SPREAD*j)
+			rooms[i][j] = room
+
+func find_mem(i,j):
+	var vec = Vector2(i,j)
+	var res = []
+	for x in corridors:
+		if(x[0] == vec):
+			res.append(x[1])
+		elif (x[1]==vec):
+			res.append(x[0])
+		else:
+			continue
+	return res
+
+func select_random_length():
+	return rng.randi_range(1, MAX_DIST)
+
+func select_random_direction():
+	var r = rng.randi_range(0,3)
+	print_debug(r)
+	match r:
+		0:
+			return Vector2.RIGHT
+		1:
+			return Vector2.DOWN
+		2:
+			return Vector2.LEFT
+		3:
+			return Vector2.UP
+
+func set(pos, val):
+	map[pos.x][pos.y] = val
+
+func get(pos):
+	return map[pos.x][pos.y]
+
+func select_random_room():
+	var id = rng.randi_range(1, roomDataHolder.rooms.size()-1)
+	return id
+
+func select_random_pos():
+	var random_pos = null
+	while random_pos==null:
+		var pos = Vector2(rng.randi_range(0,SIZE-1),rng.randi_range(0,SIZE-1))
+		if (get(pos)!=0):
+			random_pos=pos
+	return random_pos
+
+func load_room(res:String):
+	return load("res://Rooms/" + res + ".tscn").instance()
+
+func resize(i,j):
+	var res = []
+	for _i in range(i):
+		var line = []
+		for _j in range(j):
+			line.append(0)
+		res.append(line)
+	return res

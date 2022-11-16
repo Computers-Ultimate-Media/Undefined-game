@@ -45,8 +45,12 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+#
+	if(Input.is_action_just_released("ui_accept")):
+		get_tree().root.get_node("main/Map").generate_map()
 
 	if velocity.length() > 0:
+
 		$Sprite.play("run")
 		velocity = velocity.normalized() * moveSpeed
 		position += velocity * delta
@@ -54,6 +58,12 @@ func _process(delta):
 		$Sprite.play("idle")
 		
 func _unhandled_input(event: InputEvent) -> void:
+
+  if event.is_action_pressed("scroll_up"):
+		$Camera2D.zoom *= 1.1
+	if event.is_action_pressed("scroll_down"):
+		$Camera2D.zoom *= 0.9
+
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
 

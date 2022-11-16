@@ -2,12 +2,15 @@
 .import/
 *.import
 export.cfg
+*export.cfg
 export_presets.cfg
+*export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
 
 # Mono-specific ignores
 .mono/
+.mono/*
 data_*/
 /.idea/
