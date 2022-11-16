@@ -20,7 +20,7 @@ func attack(target):
 	if(target.health <= 0):
 		target.death()
 	
-func _physics_process(delta):
+func _process(delta):
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed
 		global_position += velocity
