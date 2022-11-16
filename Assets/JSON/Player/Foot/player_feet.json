@@ -1,0 +1,14 @@
+{
+  "empty": {
+    "texture": "res://Assets/Player/Foot/empty.png",
+    "moveSpeed": 500
+  },
+  "blackANDwhite": {
+    "texture": "res://Assets/Player/Foot/foot.png",
+    "moveSpeed": 1000
+  },
+  "cat": {
+    "texture": "res://Assets/Player/Foot/cat.png",
+    "moveSpeed": 200
+  }
+}

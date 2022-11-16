@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy/Enemy.gd"
+}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -28,13 +33,21 @@ _global_script_class_icons={
 "GitAPI": "",
 "RoomData": "",
 "RoomDataHolder": ""
+"base": "Node2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Weapons/Projectile.gd"
+} ]
+_global_script_class_icons={
+"Enemy": "",
+"GitAPI": "",
+"Projectile": ""
 }
 
 [application]
 
 config/name="TDS"
-run/main_scene="res://main.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://HUD/StartScreen/StartScreen.tscn"
 
 [display]
 
@@ -49,6 +62,7 @@ version_control_plugin_name="GitAPI"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom_font="res://Fonts/our_font.tres"
 
 [input]
 
@@ -85,6 +99,9 @@ scroll_down={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
