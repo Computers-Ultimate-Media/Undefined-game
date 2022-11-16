@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/StartScreen/MenuButton.gd" type="Script" id=1]
-[ext_resource path="res://HUD/StartScreen/Area2D.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
 border_color = Color( 0, 0, 0, 1 )
@@ -40,7 +39,6 @@ valign = 1
 uppercase = true
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
