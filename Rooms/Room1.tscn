@@ -49,18 +49,18 @@ position = Vector2( 16, 0 )
 [node name="RoomExits" type="Node2D" parent="."]
 position = Vector2( -32, -64 )
 
-[node name="RoomExit1" parent="RoomExits" instance=ExtResource( 3 )]
+[node name="LEFT" parent="RoomExits" instance=ExtResource( 3 )]
 position = Vector2( 0, 192 )
 
-[node name="RoomExit2" parent="RoomExits" instance=ExtResource( 3 )]
+[node name="UP" parent="RoomExits" instance=ExtResource( 3 )]
 position = Vector2( 160, 0 )
 rotation = 1.57079
 
-[node name="RoomExit3" parent="RoomExits" instance=ExtResource( 3 )]
+[node name="RIGHT" parent="RoomExits" instance=ExtResource( 3 )]
 position = Vector2( 432, 208 )
 rotation = 3.14159
 
-[node name="RoomExit4" parent="RoomExits" instance=ExtResource( 3 )]
+[node name="DOWN" parent="RoomExits" instance=ExtResource( 3 )]
 position = Vector2( 112, 384 )
 rotation = 4.71238
 

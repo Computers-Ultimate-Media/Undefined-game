@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Rooms/Room1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main.gd" type="Script" id=3]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Map/Map.gd" type="Script" id=5]
@@ -12,13 +11,8 @@ script = ExtResource( 3 )
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="Room" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( -523, -358 )
-
-[node name="Room2" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 440, -358 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -11, -56 )
+position = Vector2( 20000, 20000 )
+move_speed = 1190
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
