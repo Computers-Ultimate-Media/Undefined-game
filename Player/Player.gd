@@ -17,7 +17,7 @@ onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 signal open_inventory
 
 func _ready():
-	print_tree()
+	print_debug(self)
 	pass
 
 
