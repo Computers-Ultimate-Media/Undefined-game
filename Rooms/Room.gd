@@ -21,12 +21,12 @@ func spawn_Enemies():
 			instance.position = Vector2(0,random.randi_range(0, 100)) 
 
 func on_enemy_death():
-	var enemies = $Enemies.get_children()
-	if enemies.empty():
-		setDoors(true)
-	else:
-		setDoors(false)
-	pass
+	var enemies_count = $Enemies.get_children().size() - 1
+	if enemies_count == 0:
+		on_cleared()
+
+func on_cleared():
+	setDoors(true)
 
 func _on_RoomArea_body_entered(body:KinematicBody2D):
 	if (not body.name.begins_with("Player")):
@@ -42,7 +42,14 @@ func _on_RoomArea_body_entered(body:KinematicBody2D):
 			pass
 		roomState.CLEARED:
 			pass
+			
+	visible = true
 	pass
+
+func _on_RoomArea_body_exited(body:KinematicBody2D):
+	if (not body.name.begins_with("Player")):
+		return
+	visible = false
 
 func setDoors(state:bool):
 		for exit in exits:
@@ -62,3 +69,7 @@ func get_exit(dir : Vector2):
 	
 	exit = get_node("RoomExits/"+exit)
 	return exit
+
+func _ready() -> void:
+	self.visible = false
+	pass

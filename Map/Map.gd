@@ -2,9 +2,9 @@ extends Node2D
 
 const ROOM_SPREAD = 800
 const SIZE = 50
-const MAX_DIST = 4
+const MAX_DIST = 1.5
 
-export var ROOMS = 0
+export var ROOMS : int = rand_range(8,12)
 
 var rng = RandomNumberGenerator.new()
 var roomDataHolder = RoomDataHolder.new()
@@ -26,19 +26,18 @@ func gen_map():
 	
 	var start : Vector2 = Vector2(SIZE/2, SIZE/2);
 	map[start.x][start.y] = -1
+	var cur_rooms = 1
 	
-	# start of random walk 	
-	var cur_rooms = 0
-	while(cur_rooms<=ROOMS):
+	# start of random walk 
+	while(cur_rooms<ROOMS):
 		var pos = select_random_pos() # where to start
 		var direction = select_random_direction() # where to go
-		var dist = clamp(select_random_length(),0, ROOMS) # how far to go
-		var mem = dist+cur_rooms
+		var dist = rng.randi_range(1, MAX_DIST) # how far to go
+		var max_rooms = dist+cur_rooms
 		# moving in random direction
 		# while not maxed out rooms
-		while (cur_rooms<=mem ):
+		while (cur_rooms <= max_rooms):
 			pos = pos+direction
-			
 			# until hit another room
 			if(get(pos) != 0):
 				# with a small chance create corridor between them
@@ -46,11 +45,11 @@ func gen_map():
 				if(randf()<0.5):
 					corridors.append([pos, pos-direction])
 					break
-			cur_rooms += 1
 			# create a room
 			var random_room = select_random_room()
 			corridors.append([pos, pos-direction])
 			map[pos.x][pos.y] = random_room
+			cur_rooms += 1
 
 func set_corridors():
 	for i in range(SIZE-1):
@@ -81,7 +80,9 @@ func spawn_rooms():
 			
 			var room
 			if (Vector2(i,j)==Vector2(SIZE/2, SIZE/2)):
-				room = load_room(roomDataHolder.starting_room)
+				room = load_room(roomDataHolder.get_starting_room())
+			if (id<0):
+				room = load_room(roomDataHolder.get_room(id)) 
 			else:
 				room = load_room(roomDataHolder.rooms[id])
 			
@@ -99,10 +100,7 @@ func find_mem(i,j):
 			res.append(x[0])
 		else:
 			continue
-	return res
-
-func select_random_length():
-	return rng.randi_range(1, MAX_DIST)
+	return res 
 
 func select_random_direction():
 	var r = rng.randi_range(0,3)
