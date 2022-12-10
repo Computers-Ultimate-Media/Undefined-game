@@ -2,16 +2,10 @@ extends Node2D
 class_name RoomExit
 
 export var state = false setget set_state
-var target : Vector2
+var target : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	set_state(false)
-
-func setOpen(state:bool):
-	if (not target == null):
-		$Sprite.visible = !state
-		$StaticBody2D/CollisionShape2D.set_deferred("disabled", state)
-
 
 func teleport(node):
 	print_debug(target)
@@ -23,7 +17,7 @@ func _on_Node2D_body_shape_entered(body_rid, body, body_shape_index, local_shape
 	pass
 
 func set_state(_state):
-	if (target == null):
+	if (target == Vector2.ZERO):
 		_state = false
 	
 	state = _state

@@ -63,8 +63,8 @@ func hit(damage):
 
 
 func death():
-	emit_signal("enemy_death")
 	self.queue_free()
+	emit_signal("enemy_death")	
 	player.setCoins(player.getCoins() + 10)
 
 func _on_ShootTimer_timeout():
