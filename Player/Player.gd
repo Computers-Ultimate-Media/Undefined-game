@@ -53,7 +53,7 @@ func _process(delta):
 
 		$Sprite.play("run")
 		velocity = velocity.normalized() * moveSpeed
-		position += velocity * delta
+		move_and_slide(velocity)
 	else:
 		$Sprite.play("idle")
 		

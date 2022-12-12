@@ -68,6 +68,7 @@ animations = [ {
 radius = 15.0333
 
 [node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 3
 collision_mask = 17
 script = ExtResource( 2 )
@@ -80,8 +81,9 @@ max_damage = 50
 min_damage = 10
 critical_damage = 120
 critical_damage_chance = 100
-max_distance_shot = 100
-speed = 20
+max_distance_shot = 20
+speed = 6
+reload_time = 1
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
@@ -104,7 +106,7 @@ script = ExtResource( 8 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 script = ExtResource( 9 )
-moveSpeed = 300
+moveSpeed = 150
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
