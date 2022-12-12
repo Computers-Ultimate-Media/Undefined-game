@@ -39,7 +39,6 @@ func calculate_damage():
 	var damage = round(rand_range(min_damage, max_damage))
 	if(rand_range(0, 100) < critical_damage_chance):
 		damage = damage * (critical_damage / 100)
-		print("crit!")
 	return damage
 
 func get_reload_time():

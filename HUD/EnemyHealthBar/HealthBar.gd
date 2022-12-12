@@ -1,17 +1,17 @@
-extends Control
+extends TextureProgress
 
-onready var health_bar = $HealthBar
+#onready var health_bar = $HealthBar
 
 func _on_health_updated(health, amount):
-	health_bar.value = health
+	self.value = health
 	
 func _on_max_health_updated(max_health):
-	health_bar.max_value = max_health
+	self.max_value = max_health
 
 func _display_health_bar(state: bool):
 	if(state):
-		$HealthBar.visible = true
+		self.visible = true
 		$DisplayTimer.start(3)
 
 func _on_DisplayTimer_timeout():
-	$HealthBar.visible = false
+	self.visible = false
