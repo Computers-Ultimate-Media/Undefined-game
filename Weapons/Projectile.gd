@@ -36,7 +36,7 @@ func set_weapon_owner(value):
 	weapon_owner = value
 
 func _on_Projectile_body_entered(body):
-	if body.name == "TileMap_walls" \
+	if body.name == "TileMap" \
 	or body.name == "StaticBody2D":
 		queue_free()
 	else:

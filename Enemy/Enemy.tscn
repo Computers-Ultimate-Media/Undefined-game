@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Enemy/test.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemy/Dungeon_Character.png" type="Texture" id=2]
 [ext_resource path="res://HUD/EnemyHealthBar/HealthBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapons/Blade.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.0
+radius = 6.0
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
-scale = Vector2( 0.5, 0.5 )
 collision_layer = 5
 collision_mask = 9
 script = ExtResource( 1 )
@@ -18,7 +17,8 @@ max_health = 100
 speed = 100
 
 [node name="Blade" parent="." instance=ExtResource( 4 )]
-position = Vector2( 47, 12 )
+position = Vector2( 6, 2 )
+scale = Vector2( 0.2, 0.2 )
 z_index = 1
 weapon_owner = "Enemy"
 max_damage = 15
@@ -29,14 +29,15 @@ speed = 8
 reload_time = 2
 
 [node name="HeathBar" parent="." instance=ExtResource( 3 )]
-margin_left = -35.0
-margin_top = -49.0
-margin_right = -35.0
-margin_bottom = -49.0
-rect_scale = Vector2( 0.216, 0.185 )
+margin_left = -8.0
+margin_top = -11.0
+margin_right = 1641.0
+margin_bottom = 255.0
 
 [node name="Shape" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 48, 16, 16 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
