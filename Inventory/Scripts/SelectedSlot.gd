@@ -1,4 +1,5 @@
 extends "res://Inventory/Scripts/Slot.gd"
+class_name SelectedSlot
 
 onready var inventoryControl = get_parent()
 

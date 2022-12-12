@@ -13,3 +13,16 @@ func _ready():
 		foot.name = key
 
 		feet.append(foot)
+
+	for i in range(0, feet.size()):
+		var item = ItemFuck.instance()
+		item.init(feet[i])
+		var new_slot = grid_slots[i]
+		new_slot.putIntoSlot(item)
+
+func changeSelectedElement(element):
+	selectedFoot = element
+	player.foot = element
+
+func setPlayer(new_player):
+	.setPlayer(new_player)

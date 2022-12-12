@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-onready var head = $Sprite/Head setget setHead
-onready var foot = $Sprite/Foot setget setFoot
-onready var body = $Sprite/Body setget setBody
+onready var head = $Head setget setHead
+onready var body = $Body setget setBody
+onready var foot = $Foot setget setFoot
 
 onready var headName = head.name setget setHeadName,getHeadName
 onready var bodyName = body.name setget setBodyName,getBodyName
@@ -15,11 +15,6 @@ onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 
 signal open_inventory
-
-func _ready():
-	print_debug(self)
-	pass
-
 
 func _input(event):
 	if event.is_action_pressed("open_inventory"):
@@ -42,20 +37,39 @@ func _process(delta):
 		
 	look_at(get_global_mouse_position())
 
-func setHead(value):
-	(get_node("Sprite/" + head.name)).queue_free()
-	head = value
-	$Sprite.add_child(value)
+func setHead(newHead):
+	remove_child(get_node(head.name))
+	
+	if not newHead:
+		newHead = load("res://Player/Head.tscn").instance()
+		newHead.texture = load("res://Assets/Player/Head/empty.png")
+		newHead.hpMax = 100
+	
+	head = newHead
+	add_child(newHead)
+	
+func setBody(newBody):
+	remove_child(get_node(body.name))
+	
+	if not newBody:
+		newBody = load("res://Player/Body.tscn").instance()
+		newBody.texture = load("res://Assets/Player/Body/empty.png")
+		newBody.hpBody = 1000
+		newBody.hpRegen = 4
+	
+	body = newBody
+	add_child(newBody)
 
-func setBody(value):
-	(get_node("Sprite/" + body.name)).queue_free()
-	body = value
-	$Sprite.add_child(value)
-
-func setFoot(value):
-	(get_node("Sprite/" + foot.name)).queue_free()
-	foot = value
-	$Sprite.add_child(value)
+func setFoot(newFoot):
+	remove_child(get_node(foot.name))
+	
+	if not newFoot:
+		newFoot = load("res://Player/Foot.tscn").instance()
+		newFoot.texture = load("res://Assets/Player/Foot/empty.png")
+		newFoot.moveSpeed = 10
+	
+	foot = newFoot
+	add_child(newFoot)
 
 func setHeadName(value):
 	head.name = value

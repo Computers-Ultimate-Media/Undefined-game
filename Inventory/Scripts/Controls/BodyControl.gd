@@ -15,8 +15,12 @@ func _ready():
 		
 		bodies.append(body)
 
+	for i in range(0, bodies.size()):
+		var item = ItemFuck.instance()
+		item.init(bodies[i])
+		var new_slot = grid_slots[i]
+		new_slot.putIntoSlot(item)
+
 func changeSelectedElement(element):
 	selectedBody = element
 	player.body = element
-
-

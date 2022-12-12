@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Player/icon.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Player/Foot/Foot.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Player/Head/head.png" type="Texture" id=5]
@@ -19,19 +19,16 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Head" type="Sprite" parent="Sprite"]
+[node name="Head" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 script = ExtResource( 7 )
 
-[node name="Body" type="Sprite" parent="Sprite"]
+[node name="Body" type="Sprite" parent="."]
 texture = ExtResource( 6 )
 script = ExtResource( 8 )
 
-[node name="Foot" type="Sprite" parent="Sprite"]
+[node name="Foot" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 script = ExtResource( 9 )
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Inventory/slot.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Inventory/background.png" type="Texture" id=2]
 [ext_resource path="res://Inventory/Inventory.gd" type="Script" id=3]
 [ext_resource path="res://Inventory/Scripts/Controls/BodyControl.gd" type="Script" id=4]
-[ext_resource path="res://Inventory/Scripts/GridContainer.gd" type="Script" id=5]
 [ext_resource path="res://Inventory/Scripts/Controls/FootControl.gd" type="Script" id=6]
 [ext_resource path="res://Inventory/Scripts/Slot.gd" type="Script" id=7]
 [ext_resource path="res://Inventory/Scripts/Controls/HeadControl.gd" type="Script" id=8]
@@ -41,7 +40,6 @@ margin_bottom = 172.0
 custom_constants/vseparation = 1
 custom_constants/hseparation = 4
 columns = 3
-script = ExtResource( 5 )
 
 [node name="HeadSlot_1" type="Panel" parent="HeadControl/HeadGridContainer"]
 margin_right = 64.0
@@ -115,7 +113,6 @@ margin_bottom = 293.0
 custom_constants/vseparation = 1
 custom_constants/hseparation = 4
 columns = 3
-script = ExtResource( 5 )
 
 [node name="BodySlot_1" type="Panel" parent="BodyControl/BodyGridContainer"]
 margin_right = 64.0
@@ -190,7 +187,6 @@ margin_bottom = 293.0
 custom_constants/vseparation = 1
 custom_constants/hseparation = 4
 columns = 3
-script = ExtResource( 5 )
 
 [node name="FootSlot_1" type="Panel" parent="FootControl/FootGridContainer"]
 margin_right = 64.0
@@ -261,7 +257,6 @@ margin_left = 273.0
 margin_top = 16.0
 margin_right = 493.0
 margin_bottom = 163.0
-script = ExtResource( 5 )
 
 [node name="GunSelectedSlot" type="Panel" parent="GunControl"]
 margin_left = 123.0

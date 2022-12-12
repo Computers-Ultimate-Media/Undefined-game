@@ -13,3 +13,13 @@ func _ready():
 		head.name = key
 
 		heads.append(head)
+
+	for i in range(0, heads.size()):
+		var item = ItemFuck.instance()
+		item.init(heads[i])
+		var new_slot = grid_slots[i]
+		new_slot.putIntoSlot(item)
+
+func changeSelectedElement(element):
+	selectedHead = element
+	player.head = element

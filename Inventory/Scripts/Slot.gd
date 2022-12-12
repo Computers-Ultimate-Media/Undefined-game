@@ -1,19 +1,9 @@
 extends Panel
 class_name Slot
 
-var ItemClass = preload("res://Inventory/Item.tscn")
-var item = null
+const ItemFuck = preload("res://Inventory/Item.gd")
 
-func _ready():
-	self.connect("gui_input", self, "_on_Player_select_slot")
-	if randi() % 2 == 0:
-		item = ItemClass.instance()
-		add_child(item)
-		
-func _on_Player_select_slot(event):
-	if(event is InputEventMouseButton):
-		if(event.button_index == BUTTON_LEFT and not event.pressed):
-			print(self)
+var item : ItemFuck = null
 
 func pickFromSlot():
 	remove_child(item)

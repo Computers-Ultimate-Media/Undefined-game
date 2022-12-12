@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Panel",
+"class": "SelectedSlot",
+"language": "GDScript",
+"path": "res://Inventory/Scripts/SelectedSlot.gd"
+}, {
+"base": "Panel",
 "class": "Slot",
 "language": "GDScript",
 "path": "res://Inventory/Scripts/Slot.gd"
 } ]
 _global_script_class_icons={
+"SelectedSlot": "",
 "Slot": ""
 }
 

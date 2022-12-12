@@ -6,5 +6,9 @@
   "blackANDwhite": {
     "texture": "res://Assets/Player/Head/head.png",
     "hpMax": 200
+  },
+  "cat": {
+    "texture": "res://Assets/Player/Head/cat.png",
+    "hpMax": 999
   }
 }
