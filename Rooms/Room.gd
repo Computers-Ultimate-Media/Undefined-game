@@ -1,16 +1,18 @@
 extends Node2D
 class_name DungeonRoom
 
-enum roomState {UNVISITED, ENEMIES, CLEARED}
+enum roomState {UNVISITED, ENEMIES, CLEARED, HUB, BOSS, SHOP}
 
-onready var exits = get_tree().get_nodes_in_group("exit")
+onready var exits =  $RoomExits.get_children()
 onready var enemies = get_node("%Enemies")
 var room_state = roomState.UNVISITED 
 
-func spawn_Enemies():
-	var enemiesToSpawn = [
+var enemiesToSpawn = [
 		[load("res://Enemy/Enemy.tscn"), 3]
 	]
+
+func spawn_Enemies():
+	
 	
 	var random = RandomNumberGenerator.new()
 	for enemy in enemiesToSpawn:
@@ -42,6 +44,8 @@ func _on_RoomArea_body_entered(body:KinematicBody2D):
 			pass
 		roomState.CLEARED:
 			pass
+		roomState.HUB:
+			pass
 			
 	visible = true
 	pass
@@ -53,9 +57,10 @@ func _on_RoomArea_body_exited(body:KinematicBody2D):
 
 func setDoors(state:bool):
 		for exit in exits:
-			exit.state = state
+#			exit.state = state
+			exit.set_state(state)
 
-var EXIT_ERROR = 0.1
+const EXIT_ERROR = 0.1
 func get_exit(dir : Vector2):
 	var exit
 	if (dir-Vector2.UP).length()<EXIT_ERROR:
@@ -71,5 +76,5 @@ func get_exit(dir : Vector2):
 	return exit
 
 func _ready() -> void:
-	self.visible = false
+#	self.visible = false
 	pass

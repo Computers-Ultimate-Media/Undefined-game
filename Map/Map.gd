@@ -4,6 +4,8 @@ const ROOM_SPREAD = 800
 const SIZE = 50
 const MAX_DIST = 1.5
 
+const EMPTY_ROOM = 0
+
 export var ROOMS : int = rand_range(8,12)
 
 var rng = RandomNumberGenerator.new()
@@ -39,7 +41,7 @@ func gen_map():
 		while (cur_rooms <= max_rooms):
 			pos = pos+direction
 			# until hit another room
-			if(get(pos) != 0):
+			if(get(pos) != EMPTY_ROOM):
 				# with a small chance create corridor between them
 				# and start again
 				if(randf()<0.5):
@@ -55,7 +57,7 @@ func set_corridors():
 	for i in range(SIZE-1):
 		for j in range(SIZE-1):
 			var id = map[i][j]
-			if (id==-1):
+			if (id==EMPTY_ROOM):
 				continue
 			var pos = Vector2(i,j)
 			var target_poss = find_mem(i,j)
@@ -75,13 +77,13 @@ func spawn_rooms():
 	for i in range(SIZE-1):
 		for j in range(SIZE-1):
 			var id = map[i][j]
-			if(id == 0):
+			if(id == EMPTY_ROOM):
 				continue
 			
 			var room
 			if (Vector2(i,j)==Vector2(SIZE/2, SIZE/2)):
 				room = load_room(roomDataHolder.get_starting_room())
-			if (id<0):
+			elif (id<0):
 				room = load_room(roomDataHolder.get_room(id)) 
 			else:
 				room = load_room(roomDataHolder.rooms[id])
@@ -100,7 +102,7 @@ func find_mem(i,j):
 			res.append(x[0])
 		else:
 			continue
-	return res 
+	return res
 
 func select_random_direction():
 	var r = rng.randi_range(0,3)
@@ -128,7 +130,7 @@ func select_random_pos():
 	var random_pos = null
 	while random_pos==null:
 		var pos = Vector2(rng.randi_range(0,SIZE-1),rng.randi_range(0,SIZE-1))
-		if (get(pos)!=0):
+		if (get(pos)!=EMPTY_ROOM):
 			random_pos=pos
 	return random_pos
 
@@ -140,6 +142,6 @@ func resize(i,j):
 	for _i in range(i):
 		var line = []
 		for _j in range(j):
-			line.append(0)
+			line.append(EMPTY_ROOM)
 		res.append(line)
 	return res

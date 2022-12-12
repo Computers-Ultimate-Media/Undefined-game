@@ -1,7 +1,7 @@
 class_name RoomDataHolder
 
 
-var starting_rooms = ["Room1","Room1"]
+var starting_rooms = ["StartingRoom","StartingRoom"]
 var rooms = ["Room1","Room1"] 
 var boss_rooms = ["Room1","Room1"] 
 
@@ -11,7 +11,7 @@ func get_starting_room():
 
 func get_random_room():
 	var rng = RandomNumberGenerator.new()
-	return rooms[rng.randi_range(0, rooms.size()+1)]
+	return rooms[rng.randi_range(0, rooms.size())]
 
 func get_room(id):
 	var rng = RandomNumberGenerator.new()
