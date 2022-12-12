@@ -5,22 +5,17 @@
 [ext_resource path="res://Assets/HUD/EnemyHealthBar/progres.png" type="Texture" id=3]
 [ext_resource path="res://HUD/EnemyHealthBar/HealthBar.gd" type="Script" id=4]
 
-[node name="HeathBar" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 4 )
-
-[node name="HealthBar" type="TextureProgress" parent="."]
+[node name="HealthBar" type="TextureProgress"]
 visible = false
-margin_top = 1.0
 margin_right = 1649.0
-margin_bottom = 267.0
-rect_scale = Vector2( 0.2, 0.2 )
+margin_bottom = 266.0
+rect_scale = Vector2( 0.01, 0.01 )
 value = 100.0
 texture_under = ExtResource( 1 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 tint_progress = Color( 1, 0, 0, 1 )
+script = ExtResource( 4 )
 
 [node name="DisplayTimer" type="Timer" parent="."]
 
