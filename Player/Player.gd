@@ -14,7 +14,7 @@ onready var bodyName = body.name setget setBodyName,getBodyName
 onready var footName = foot.name setget setFootName,getFootName
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
-onready var health = 5000000 setget setHpCurrent,getHpCurrent
+onready var health = head.hpMax setget setHpCurrent,getHpCurrent
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
