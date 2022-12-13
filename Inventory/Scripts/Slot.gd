@@ -12,11 +12,6 @@ func pickFromSlot():
 func putIntoSlot(new_item):
 	item = new_item
 	item.position = Vector2(0, 0)
-	inventoryNode.remove_child(item)
+	if inventoryNode.has_node(new_item.name):
+		inventoryNode.remove_child(item)
 	add_child(item)
-
-func putNewIntoSlot(new_item):
-	item = new_item
-	item.position = Vector2(0, 0)
-	add_child(item)
-

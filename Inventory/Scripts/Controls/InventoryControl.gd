@@ -14,7 +14,6 @@ func _ready():
 	for slot in grid_slots:
 		slot.connect("gui_input", self, "grid_slot_gui_input", [slot])
 
-
 func _input(_event):
 	if holding_item:
 		var global_mouse_position = holding_item.get_global_mouse_position()
@@ -24,17 +23,6 @@ func _input(_event):
 
 func setPlayer(new_player):
 	player = new_player
-
-func read_from_JSON(path):
-	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, File.READ)
-		var data = parse_json(file.get_as_text())
-		file.close()
-		return data
-	else:
-		printerr("Invalid path given")
-
 
 func grid_slot_gui_input(event: InputEvent, slot: Slot):
 	if event is InputEventMouseButton:
@@ -54,3 +42,13 @@ func grid_slot_gui_input(event: InputEvent, slot: Slot):
 				holding_item = slot.item
 				slot.pickFromSlot()
 				_input(event)
+
+func read_from_JSON(path):
+	var file = File.new()
+	if file.file_exists(path):
+		file.open(path, File.READ)
+		var data = parse_json(file.get_as_text())
+		file.close()
+		return data
+	else:
+		printerr("Invalid path given")

@@ -17,7 +17,7 @@ func _ready():
 		var item = Item.instance()
 		item.init(heads[i])
 		var new_slot = grid_slots[i]
-		new_slot.putNewIntoSlot(item)
+		new_slot.putIntoSlot(item)
 
 func changeSelectedElement(element):
 	player.head = element
@@ -26,4 +26,4 @@ func setPlayer(new_player):
 	.setPlayer(new_player)
 	var item = Item.instance()
 	item.init(new_player.head)
-	selectedSlot.putNewIntoSlot(item)
+	selectedSlot.putIntoSlot(item)
