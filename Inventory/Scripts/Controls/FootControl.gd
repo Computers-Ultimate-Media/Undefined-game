@@ -14,16 +14,16 @@ func _ready():
 		feet.append(foot)
 
 	for i in range(0, feet.size()):
-		var item = ItemFuck.instance()
+		var item = Item.instance()
 		item.init(feet[i])
 		var new_slot = grid_slots[i]
-		new_slot.putIntoSlot(item)
+		new_slot.putNewIntoSlot(item)
 
 func changeSelectedElement(element):
 	player.foot = element
 
 func setPlayer(new_player):
 	.setPlayer(new_player)
-	var item = ItemFuck.instance()
+	var item = Item.instance()
 	item.init(new_player.foot)
-	selectedSlot.putIntoSlot(item)
+	selectedSlot.putNewIntoSlot(item)

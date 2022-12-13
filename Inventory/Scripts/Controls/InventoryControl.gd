@@ -1,6 +1,6 @@
 extends Control
 
-const ItemFuck = preload("res://Inventory/Item.tscn")
+const Item = preload("res://Inventory/Item.tscn")
 
 var player = null setget setPlayer
 var holding_item = null
@@ -15,15 +15,12 @@ func _ready():
 		slot.connect("gui_input", self, "grid_slot_gui_input", [slot])
 
 
-func _input(event):
+func _input(_event):
 	if holding_item:
 		var global_mouse_position = holding_item.get_global_mouse_position()
 		global_mouse_position.x += 1
 		global_mouse_position.y += 1
 		holding_item.global_position = global_mouse_position
-
-func changeSelectedElement(element):
-	pass
 
 func setPlayer(new_player):
 	player = new_player

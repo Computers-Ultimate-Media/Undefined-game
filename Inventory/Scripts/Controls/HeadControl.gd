@@ -14,16 +14,16 @@ func _ready():
 		heads.append(head)
 
 	for i in range(0, heads.size()):
-		var item = ItemFuck.instance()
+		var item = Item.instance()
 		item.init(heads[i])
 		var new_slot = grid_slots[i]
-		new_slot.putIntoSlot(item)
+		new_slot.putNewIntoSlot(item)
 
 func changeSelectedElement(element):
 	player.head = element
 
 func setPlayer(new_player):
 	.setPlayer(new_player)
-	var item = ItemFuck.instance()
+	var item = Item.instance()
 	item.init(new_player.head)
-	selectedSlot.putIntoSlot(item)
+	selectedSlot.putNewIntoSlot(item)
