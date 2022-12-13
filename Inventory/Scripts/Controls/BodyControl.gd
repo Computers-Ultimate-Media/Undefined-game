@@ -1,7 +1,6 @@
 extends "res://Inventory/Scripts/Controls/InventoryControl.gd"
 
 var bodies = []
-var selectedBody = null
 
 func _ready():
 	var dict_bodies = read_from_JSON("res://Assets/JSON/Player/Body/player_bodies.json")
@@ -22,5 +21,10 @@ func _ready():
 		new_slot.putIntoSlot(item)
 
 func changeSelectedElement(element):
-	selectedBody = element
 	player.body = element
+
+func setPlayer(new_player):
+	.setPlayer(new_player)
+	var item = ItemFuck.instance()
+	item.init(new_player.body)
+	selectedSlot.putIntoSlot(item)
