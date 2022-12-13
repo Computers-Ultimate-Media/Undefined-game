@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-var player = null
+var current_player = null
 
 func _on_Player_open_inventory(player):
-	if not self.player:
-		self.player = player
+	if not current_player:
+		current_player = player
 		($HeadControl).player = player
 		($BodyControl).player = player
 		($FootControl).player = player
