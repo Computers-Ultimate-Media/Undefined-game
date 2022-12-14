@@ -3,30 +3,30 @@ extends KinematicBody2D
 signal player_stats_changed
 signal player_damaged
 signal player_dead
+signal open_inventory
 
 onready var head = $Sprite/Head setget setHead
 onready var foot = $Sprite/Foot setget setFoot
 onready var body = $Sprite/Body setget setBody
 onready var weapon = $Blade setget setWeapon
 
-onready var headName = head.name setget setHeadName,getHeadName
-onready var bodyName = body.name setget setBodyName,getBodyName
-onready var footName = foot.name setget setFootName,getFootName
-
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
 onready var health = head.hpMax setget setHpCurrent,getHpCurrent
-onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 
+onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
 onready var armorCurrent = 50 setget setArmorCurrent,getArmorCurrent
 
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 onready var coins = 100 setget setCoins, getCoins
 
-var head_array = []
 var perk_lvl = 6
-
 var can_regenerate
+
+func _input(event):
+	if event.is_action_pressed("open_inventory"):
+		emit_signal("open_inventory", self)
+
 
 func _ready():
 	player_regenerate(hpRegen)
@@ -50,7 +50,6 @@ func _process(delta):
 		get_tree().root.get_node("main/Map").generate_map()
 
 	if velocity.length() > 0:
-
 		$Sprite.play("run")
 		velocity = velocity.normalized() * moveSpeed
 		move_and_slide(velocity)
@@ -58,7 +57,6 @@ func _process(delta):
 		$Sprite.play("idle")
 		
 func _unhandled_input(event: InputEvent) -> void:
-
 	if event.is_action_pressed("scroll_up"):
 		$Camera2D.zoom *= 1.1
 	if event.is_action_pressed("scroll_down"):
@@ -71,54 +69,50 @@ func player_regenerate(hpRegen):
 	if(hpMax - health > 0 && can_regenerate):
 		health += hpRegen
 		emit_signal("player_stats_changed", self)
-		
+
 func _on_HP_timeout():
 	can_regenerate = true
 	player_regenerate(hpRegen)
-	
-func setCoins(value):
-	coins = value
-	
-func getCoins():
-	return coins
-	
+
 func setWeapon(value):
 	weapon.queue_free()
 	weapon = value
 	self.add_child(weapon)
-	
-func setHead(value):
-	(get_node("Sprite/" + head.name)).queue_free()
-	head = value
-	$Sprite.add_child(value)
 
-func setBody(value):
-	(get_node("Sprite/" + body.name)).queue_free()
-	body = value
-	$Sprite.add_child(value)
+func setHead(newHead):
+	$Sprite.remove_child($Sprite.get_node(head.name))
 
-func setFoot(value):
-	(get_node("Sprite/" + foot.name)).queue_free()
-	foot = value
-	$Sprite.add_child(value)
-	
-func setHeadName(value):
-	head.name = value
+	if not newHead:
+		newHead = load("res://Player/Head.tscn").instance()
+		newHead.texture = load("res://Assets/Player/Head/empty.png")
+		newHead.hpMax = 100
 
-func getHeadName():
-	return head.name
+	head = newHead
+	$Sprite.add_child(newHead)
 
-func setBodyName(value):
-	body.name = value
+func setBody(newBody):
+	$Sprite.remove_child($Sprite.get_node(body.name))
 
-func getBodyName():
-	return body.name
+	if not newBody:
+		newBody = load("res://Player/Body.tscn").instance()
+		newBody.texture = load("res://Assets/Player/Body/empty.png")
+		newBody.armorMax = 1000
+		newBody.hpRegen = 4
 
-func setFootName(value):
-	foot.name = value
+	body = newBody
+	$Sprite.add_child(newBody)
 
-func getFootName():
-	return foot.name
+func setFoot(newFoot):
+	print(get_node(foot.name))
+	$Sprite.remove_child($Sprite.get_node(foot.name))
+
+	if not newFoot:
+		newFoot = load("res://Player/Foot.tscn").instance()
+		newFoot.texture = load("res://Assets/Player/Foot/empty.png")
+		newFoot.moveSpeed = 10
+
+	foot = newFoot
+	$Sprite.add_child(newFoot)
 
 func getHpMax():
 	return head.hpMax
@@ -137,7 +131,7 @@ func getArmorCurrent():
 
 func setArmorCurrent(value):
 	armorCurrent = value
-	
+
 func getArmorMax():
 	return body.armorMax
 
@@ -158,6 +152,12 @@ func setMoveSpeed(value):
 
 func getPerkLVL():
 	return perk_lvl
+
+func setCoins(value):
+	coins = value
+
+func getCoins():
+	return coins
 
 func hit(damage):
 	$Timer/HP.start()

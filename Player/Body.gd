@@ -17,3 +17,4 @@ func getHpRegen():
 
 func setHpRegen(value):
 	hpRegen = value
+

@@ -9,6 +9,6 @@
   },
   "cat": {
     "texture": "res://Assets/Player/Head/cat.png",
-    "hpMax": 9
+    "hpMax": 999
   }
 }
