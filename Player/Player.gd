@@ -10,8 +10,8 @@ onready var foot = $Sprite/Foot setget setFoot
 onready var body = $Sprite/Body setget setBody
 onready var weapon = $Weapon setget setWeapon
 
-onready var hpMax = head.hpMax setget setHpMax,getHpMax
-onready var health = head.hpMax setget setHpCurrent,getHpCurrent
+onready var healthMax = head.healthMax setget setHpMax,getHpMax
+onready var health = head.healthMax setget setHpCurrent,getHpCurrent
 
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
@@ -65,7 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		weapon.shoot()
 
 func player_regenerate(hpRegen):
-	if(self.hpMax - self.health > 0 && can_regenerate):
+	if(self.healthMax - self.health > 0 && can_regenerate):
 		self.health += self.hpRegen
 		emit_signal("player_stats_changed", self)
 
@@ -143,10 +143,10 @@ func setArmorMax(value):
 	body.armorMax = value
 
 func getHpMax():
-	return head.hpMax
+	return head.healthMax
 
 func setHpMax(value):
-	head.hpMax = value
+	head.healthMax = value
 
 func getHpRegen():
 	return body.hpRegen

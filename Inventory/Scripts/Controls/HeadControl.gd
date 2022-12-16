@@ -7,7 +7,7 @@ func _ready():
 	for key in dict_heads.keys():
 		var head = load("res://Player/Head.tscn").instance()
 		head.texture = load(dict_heads[key]["texture"])
-		head.hpMax = dict_heads[key]["hpMax"]
+		head.healthMax = dict_heads[key]["healthMax"]
 
 		head.name = key
 

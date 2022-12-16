@@ -7,7 +7,7 @@
   "blackANDwhite": {
     "texture": "res://Assets/Player/Body/body.png",
     "armorMax": 100500,
-    "hpRegen": 69
+    "hpRegen": 100
   },
   "cat": {
     "texture": "res://Assets/Player/Body/cat.png",

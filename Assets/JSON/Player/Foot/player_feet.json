@@ -5,6 +5,6 @@
   },
   "blackANDwhite": {
     "texture": "res://Assets/Player/Foot/foot.png",
-    "moveSpeed": 1000
+    "moveSpeed": 800
   }
 }
