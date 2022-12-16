@@ -1,9 +1,14 @@
 extends Sprite
 
-export var hpMax = 120 setget setHpMax,getHpMax
+class_name Head
 
-func _ready():
-	pass
+export var hpMax = 100 setget setHpMax,getHpMax
+
+static func getDefault():
+	var defaultHead = load("res://Player/Head.tscn").instance()
+	defaultHead.texture = null
+	defaultHead.hpMax = 100
+	return defaultHead
 
 func getHpMax():
 	return hpMax

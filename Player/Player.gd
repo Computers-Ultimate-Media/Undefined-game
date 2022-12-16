@@ -50,7 +50,7 @@ func _process(delta):
 
 	if velocity.length() > 0:
 		$Sprite.play("run")
-		velocity = velocity.normalized() * moveSpeed
+		velocity = velocity.normalized() * self.moveSpeed
 		move_and_slide(velocity)
 	else:
 		$Sprite.play("idle")
@@ -65,8 +65,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		weapon.shoot()
 
 func player_regenerate(hpRegen):
-	if(hpMax - health > 0 && can_regenerate):
-		health += hpRegen
+	if(self.hpMax - self.health > 0 && can_regenerate):
+		self.health += self.hpRegen
 		emit_signal("player_stats_changed", self)
 
 func _on_HP_timeout():
@@ -75,7 +75,7 @@ func _on_HP_timeout():
 
 func hit(damage):
 	$Timer/HP.start()
-	health -= damage
+	self.health -= damage
 	emit_signal("player_damaged")
 
 func death():
@@ -95,43 +95,35 @@ func setHead(newHead):
 	$Sprite.remove_child($Sprite.get_node(head.name))
 
 	if not newHead:
-		newHead = load("res://Player/Head.tscn").instance()
-		newHead.texture = load("res://Assets/Player/Head/empty.png")
-		newHead.hpMax = 100
-
+		newHead = load("res://Player/Head.gd").getDefault()
+	
 	head = newHead
 	$Sprite.add_child(newHead)
+	emit_signal("player_stats_changed", self)
+
 
 func setBody(newBody):
 	$Sprite.remove_child($Sprite.get_node(body.name))
 
 	if not newBody:
-		newBody = load("res://Player/Body.tscn").instance()
-		newBody.texture = load("res://Assets/Player/Body/empty.png")
-		newBody.armorMax = 1000
-		newBody.hpRegen = 4
+		newBody = load("res://Player/Body.gd").getDefault()
 
 	body = newBody
 	$Sprite.add_child(newBody)
+	emit_signal("player_stats_changed", self)
+
 
 func setFoot(newFoot):
-	print(get_node(foot.name))
 	$Sprite.remove_child($Sprite.get_node(foot.name))
 
 	if not newFoot:
-		newFoot = load("res://Player/Foot.tscn").instance()
-		newFoot.texture = load("res://Assets/Player/Foot/empty.png")
-		newFoot.moveSpeed = 10
+		newFoot = load("res://Player/Foot.gd").getDefault()
 
 	foot = newFoot
 	$Sprite.add_child(newFoot)
+	emit_signal("player_stats_changed", self)
 
-func getHpMax():
-	return head.hpMax
 
-func setHpMax(value):
-	head.hpMax = value
-	
 func getHpCurrent():
 	return health
 
@@ -150,6 +142,12 @@ func getArmorMax():
 func setArmorMax(value):
 	body.armorMax = value
 
+func getHpMax():
+	return head.hpMax
+
+func setHpMax(value):
+	head.hpMax = value
+
 func getHpRegen():
 	return body.hpRegen
 
@@ -162,8 +160,6 @@ func getMoveSpeed():
 func setMoveSpeed(value):
 	foot.moveSpeed = value
 
-func getPerkLVL():
-	return perk_lvl
 
 func setCoins(value):
 	coins = value
