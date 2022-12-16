@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Weapon/Weapon.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Weapons/Wood.png" type="Texture" id=2]
 
 [node name="Blade" type="Node2D"]
@@ -11,7 +11,7 @@ rotation = 4.71239
 texture = ExtResource( 2 )
 offset = Vector2( 16, 0 )
 region_enabled = true
-region_rect = Rect2( 80, 0, 31, 15 )
+region_rect = Rect2( 78.7712, 1.77926, 31.7897, 12.657 )
 
 [node name="ShootPoint" type="Position2D" parent="."]
 position = Vector2( 0, -26 )

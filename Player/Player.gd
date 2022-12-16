@@ -8,7 +8,7 @@ signal open_inventory
 onready var head = $Sprite/Head setget setHead
 onready var foot = $Sprite/Foot setget setFoot
 onready var body = $Sprite/Body setget setBody
-onready var weapon = $Blade setget setWeapon
+onready var weapon = $Weapon setget setWeapon
 
 onready var hpMax = head.hpMax setget setHpMax,getHpMax
 onready var health = head.hpMax setget setHpCurrent,getHpCurrent
@@ -45,7 +45,6 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-#
 	if(Input.is_action_just_released("ui_accept")):
 		get_tree().root.get_node("main/Map").generate_map()
 
@@ -58,9 +57,9 @@ func _process(delta):
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
-		$Camera2D.zoom *= 1.1
-	if event.is_action_pressed("scroll_down"):
 		$Camera2D.zoom *= 0.9
+	if event.is_action_pressed("scroll_down"):
+		$Camera2D.zoom *= 1.1
 
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
@@ -73,6 +72,19 @@ func player_regenerate(hpRegen):
 func _on_HP_timeout():
 	can_regenerate = true
 	player_regenerate(hpRegen)
+
+func hit(damage):
+	$Timer/HP.start()
+	health -= damage
+	emit_signal("player_damaged")
+
+func death():
+	self.queue_free()
+	emit_signal("player_dead")
+
+func _on_Player_player_damaged():
+	emit_signal("player_stats_changed", self)
+
 
 func setWeapon(value):
 	weapon.queue_free()
@@ -158,15 +170,3 @@ func setCoins(value):
 
 func getCoins():
 	return coins
-
-func hit(damage):
-	$Timer/HP.start()
-	health -= damage
-	emit_signal("player_damaged")
-
-func death():
-	self.queue_free()
-	emit_signal("player_dead")
-
-func _on_Player_player_damaged():
-	emit_signal("player_stats_changed", self)

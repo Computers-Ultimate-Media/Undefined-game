@@ -9,7 +9,7 @@ var room_state = roomState.UNVISITED
 
 func spawn_Enemies():
 	var enemiesToSpawn = [
-		[load("res://Enemy/Enemy.tscn"), 0]
+		[load("res://Enemy/Enemy.tscn"), 3]
 	]
 	
 	var random = RandomNumberGenerator.new()

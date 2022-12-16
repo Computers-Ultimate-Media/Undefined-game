@@ -1,6 +1,6 @@
 extends Node2D
 
-var Projectile = preload("res://Weapons/Projectile.tscn")
+var Projectile = preload("res://Weapon/Projectile.tscn")
 var target = null
 var target_position = null
 

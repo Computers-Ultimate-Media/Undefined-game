@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://Weapons/Projectile.gd"
+"path": "res://Weapon/Projectile.gd"
 }, {
 "base": "Reference",
 "class": "RoomData",
