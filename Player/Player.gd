@@ -23,11 +23,6 @@ onready var coins = 100 setget setCoins, getCoins
 var perk_lvl = 6
 var can_regenerate
 
-func _input(event):
-	if event.is_action_pressed("open_inventory"):
-		emit_signal("open_inventory", self)
-
-
 func _ready():
 	player_regenerate(HealthRegen)
 	emit_signal("player_stats_changed", self)
@@ -60,7 +55,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		$Camera2D.zoom *= 0.9
 	if event.is_action_pressed("scroll_down"):
 		$Camera2D.zoom *= 1.1
-
+	if event.is_action_pressed("open_inventory"):
+		emit_signal("open_inventory", self)
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
 
