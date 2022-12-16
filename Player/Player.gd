@@ -12,10 +12,10 @@ onready var weapon = $Weapon setget setWeapon
 
 onready var healthMax = head.healthMax setget setHpMax,getHpMax
 onready var health = head.healthMax setget setHpCurrent,getHpCurrent
-
 onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
+
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
-onready var armorCurrent = 50 setget setArmorCurrent,getArmorCurrent
+onready var armor = 50 setget setArmor,getArmor
 
 onready var moveSpeed = foot.moveSpeed setget setMoveSpeed,getMoveSpeed
 onready var coins = 100 setget setCoins, getCoins
@@ -130,11 +130,11 @@ func getHpCurrent():
 func setHpCurrent(value):
 	health = value
 
-func getArmorCurrent():
-	return armorCurrent
+func getArmor():
+	return armor
 
-func setArmorCurrent(value):
-	armorCurrent = value
+func setArmor(value):
+	armor = value
 
 func getArmorMax():
 	return body.armorMax
