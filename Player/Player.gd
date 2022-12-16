@@ -10,9 +10,9 @@ onready var foot = $Sprite/Foot setget setFoot
 onready var body = $Sprite/Body setget setBody
 onready var weapon = $Weapon setget setWeapon
 
-onready var healthMax = head.healthMax setget setHpMax,getHpMax
-onready var health = head.healthMax setget setHpCurrent,getHpCurrent
-onready var hpRegen = body.hpRegen setget setHpRegen,getHpRegen
+onready var healthMax = head.healthMax setget setHealthMax,getHealthMax
+onready var health = head.healthMax setget setHealth,getHealth
+onready var HealthRegen = body.healthRegen setget setHealthRegen,getHealthRegen
 
 onready var armorMax = body.armorMax setget setArmorMax,getArmorMax
 onready var armor = 50 setget setArmor,getArmor
@@ -29,7 +29,7 @@ func _input(event):
 
 
 func _ready():
-	player_regenerate(hpRegen)
+	player_regenerate(HealthRegen)
 	emit_signal("player_stats_changed", self)
 	$Timer/HP.wait_time = 2
 
@@ -64,14 +64,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
 
-func player_regenerate(hpRegen):
+func player_regenerate(HealthRegen):
 	if(self.healthMax - self.health > 0 && can_regenerate):
-		self.health += self.hpRegen
+		self.health += self.HealthRegen
 		emit_signal("player_stats_changed", self)
 
 func _on_HP_timeout():
 	can_regenerate = true
-	player_regenerate(hpRegen)
+	player_regenerate(HealthRegen)
 
 func hit(damage):
 	$Timer/HP.start()
@@ -124,10 +124,10 @@ func setFoot(newFoot):
 	emit_signal("player_stats_changed", self)
 
 
-func getHpCurrent():
+func getHealth():
 	return health
 
-func setHpCurrent(value):
+func setHealth(value):
 	health = value
 
 func getArmor():
@@ -142,17 +142,17 @@ func getArmorMax():
 func setArmorMax(value):
 	body.armorMax = value
 
-func getHpMax():
+func getHealthMax():
 	return head.healthMax
 
-func setHpMax(value):
+func setHealthMax(value):
 	head.healthMax = value
 
-func getHpRegen():
-	return body.hpRegen
+func getHealthRegen():
+	return body.healthRegen
 
-func setHpRegen(value):
-	body.hpRegen = value
+func setHealthRegen(value):
+	body.healthRegen = value
 
 func getMoveSpeed():
 	return foot.moveSpeed

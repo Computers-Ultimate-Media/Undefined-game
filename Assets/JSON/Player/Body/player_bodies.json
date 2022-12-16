@@ -2,16 +2,16 @@
   "empty": {
     "texture": "res://Assets/Player/Body/empty.png",
     "armorMax": 100,
-    "hpRegen": 1
+    "HealthRegen": 1
   },
   "blackANDwhite": {
     "texture": "res://Assets/Player/Body/body.png",
     "armorMax": 100500,
-    "hpRegen": 100
+    "HealthRegen": 100
   },
   "cat": {
     "texture": "res://Assets/Player/Body/cat.png",
     "armorMax": 77,
-    "hpRegen": 77
+    "HealthRegen": 77
   }
 }

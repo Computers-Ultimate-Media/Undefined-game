@@ -8,7 +8,7 @@ func _ready():
 		var body = load("res://Player/Body.tscn").instance()
 		body.texture = load(dict_bodies[key]["texture"])
 		body.armorMax = dict_bodies[key]["armorMax"]
-		body.hpRegen = dict_bodies[key]["hpRegen"]
+		body.healthRegen = dict_bodies[key]["HealthRegen"]
 		
 		body.name = key
 		
