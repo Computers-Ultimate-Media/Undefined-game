@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Weapon/Bullet.gd"
+}, {
+"base": "Node2D",
 "class": "DungeonRoom",
 "language": "GDScript",
 "path": "res://Rooms/Room.gd"
@@ -19,10 +24,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemy/Enemy.gd"
 }, {
-"base": "Node2D",
-"class": "Projectile",
+"base": "Sprite",
+"class": "Head",
 "language": "GDScript",
-"path": "res://Weapon/Projectile.gd"
+"path": "res://Player/Head.gd"
 }, {
 "base": "Reference",
 "class": "RoomData",
@@ -45,9 +50,10 @@ _global_script_classes=[ {
 "path": "res://Inventory/Scripts/Slot.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "DungeonRoom": "",
 "Enemy": "",
-"Projectile": "",
+"Head": "",
 "RoomData": "",
 "RoomDataHolder": "",
 "RoomExit": "",
@@ -136,8 +142,8 @@ open_inventory={
 2d_physics/layer_1="collisions"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
-2d_physics/layer_4="player_projectile"
-2d_physics/layer_5="enemy_projectile"
+2d_physics/layer_4="player_bullet"
+2d_physics/layer_5="enemy_bullet"
 
 [mono]
 

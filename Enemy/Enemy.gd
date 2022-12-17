@@ -8,7 +8,7 @@ var target = null
 
 onready var floating_text = preload("res://HUD/InGameHUD/FloatingText.tscn") 
 
-onready var projectile 
+onready var bullet
 onready var weapon = $Blade
 onready var health_bar = $HeathBar
 

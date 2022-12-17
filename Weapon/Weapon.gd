@@ -1,6 +1,6 @@
 extends Node2D
 
-var Projectile = preload("res://Weapon/Projectile.tscn")
+var Bullet = preload("res://Weapon/Bullet.tscn")
 var target = null
 var target_position = null
 
@@ -21,19 +21,18 @@ func shoot():
 	else:
 		target_position = target.global_position
 		
-	var angle_to = target_position.angle_to_point($ShootPoint.global_position) - 0.785398
-	var projectile = Projectile.instance()
-	var direction = Vector2.ONE.rotated(angle_to).normalized()
-	
-	projectile.global_position = $ShootPoint.global_position
-	projectile.set_weapon_owner(weapon_owner)
-	projectile.set_direction(direction) 
-	
-	projectile.damage = calculate_damage()
-	projectile.time = max_distance_shot / speed
-	projectile.speed = speed
-	
-	get_tree().root.get_child(0).add_child(projectile)
+	var bullet = Bullet.instance()
+	add_child(bullet)
+	bullet.global_position = $ShootPoint.global_position
+	var direction_to_mouse = $ShootPoint.global_position.direction_to(target_position).normalized()
+
+	bullet.setDirection(direction_to_mouse)
+	bullet.set_weapon_owner(weapon_owner)
+
+	bullet.damage = calculate_damage()
+	bullet.time = max_distance_shot / speed
+	bullet.speed = speed
+
 
 func calculate_damage():
 	var damage = round(rand_range(min_damage, max_damage))

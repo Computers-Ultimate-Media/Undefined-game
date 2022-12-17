@@ -1,9 +1,9 @@
 extends Node2D
 
-class_name Projectile
+class_name Bullet
 
 var weapon_owner setget set_weapon_owner
-var direction := Vector2(-1, 0) setget set_direction
+var direction := Vector2.ZERO setget setDirection
 
 var damage: int
 var time: int
@@ -13,21 +13,20 @@ onready var timer = $KillTimer
 
 func _ready():
 	timer.start(time / 3)
-	
+
+func _physics_process(delta):
+	if direction != Vector2.ZERO:
+		var velocity = direction * speed
+		global_position += velocity
+
 func attack(target):
 	target.hit(damage)
 	queue_free()
 	if(target.health <= 0):
 		target.death()
 	
-func _process(delta):
-	if direction != Vector2.ZERO:
-		var velocity = direction * speed
-		global_position += velocity
-
-func set_direction(vector: Vector2):
-	direction = vector
-	rotation += direction.angle()
+func setDirection(newDirection: Vector2):
+	direction = newDirection
 
 func _on_KillTimer_timeout():
 	queue_free()
@@ -35,7 +34,7 @@ func _on_KillTimer_timeout():
 func set_weapon_owner(value):
 	weapon_owner = value
 
-func _on_Projectile_body_entered(body):
+func _on_Bullet_body_entered(body):
 	if body.name == "TileMap" \
 	or body.name == "StaticBody2D":
 		queue_free()
