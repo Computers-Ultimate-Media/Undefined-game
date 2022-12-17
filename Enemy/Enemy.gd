@@ -24,8 +24,8 @@ export var speed : int
 signal enemy_death
 
 func _ready():
-	shooting_time = weapon.get_reload_time()
-	shooting_distance = weapon.get_shooting_distance()
+	shooting_time = weapon.reloadTime
+	shooting_distance = weapon.shootingDistance
 	player = get_tree().root.get_node("main/Player")
 	health_bar._on_max_health_updated(max_health)
 

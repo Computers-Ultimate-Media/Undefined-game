@@ -5,15 +5,15 @@ var target = null
 var target_position = null
 
 export var weapon_owner = "title_"
-export var max_damage = 10
-export var min_damage = 5
+export var maxDamage = 10
+export var minDamage = 5
 
-export var critical_damage: int
-export var critical_damage_chance: int
-export var max_distance_shot: int
+export var criticalDamage: int
+export var criticalDamageChance: int
+export var shootingDistance: int
 export var speed: int
 
-export var reload_time: int
+export var reloadTime: int setget ,getReloadTime
 
 func shoot():
 	if weapon_owner == "Player":
@@ -30,18 +30,20 @@ func shoot():
 	bullet.set_weapon_owner(weapon_owner)
 
 	bullet.damage = calculate_damage()
-	bullet.time = max_distance_shot / speed
+	bullet.time = shootingDistance / speed
 	bullet.speed = speed
 
 
-func calculate_damage():
-	var damage = round(rand_range(min_damage, max_damage))
-	if(rand_range(0, 100) < critical_damage_chance):
-		damage = damage * (critical_damage / 100)
+func calculate_damage() -> int:
+	var damage = round(rand_range(minDamage, maxDamage))
+	if(rand_range(0, 100) < criticalDamageChance):
+		damage = damage * (criticalDamage / 100)
+	print(damage)
 	return damage
 
-func get_reload_time():
-	return reload_time
 
-func get_shooting_distance():
-	return max_distance_shot
+func getReloadTime():
+	return reloadTime
+
+func getShootingDistance():
+	return shootingDistance
