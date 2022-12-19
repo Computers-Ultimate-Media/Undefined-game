@@ -1,18 +1,7 @@
 extends "res://Inventory/Scripts/Controls/InventoryControl.gd"
 
-var heads = []
-
 func _ready():
-	var dict_heads = read_from_JSON("res://Assets/JSON/Player/Head/player_heads.json")
-	for key in dict_heads.keys():
-		var head = load("res://Player/Head.tscn").instance()
-		head.texture = load(dict_heads[key]["texture"])
-		head.healthMax = dict_heads[key]["healthMax"]
-
-		head.name = key
-
-		heads.append(head)
-
+	var heads = Head.fromJsonArray("res://Assets/JSON/Player/Head/player_heads.json")
 	for i in range(0, heads.size()):
 		var item = Item.instance()
 		item.init(heads[i])

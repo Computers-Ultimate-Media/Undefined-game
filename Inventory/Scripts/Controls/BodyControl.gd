@@ -1,19 +1,8 @@
 extends "res://Inventory/Scripts/Controls/InventoryControl.gd"
 
-var bodies = []
 
 func _ready():
-	var dict_bodies = read_from_JSON("res://Assets/JSON/Player/Body/player_bodies.json")
-	for key in dict_bodies.keys():
-		var body = load("res://Player/Body.tscn").instance()
-		body.texture = load(dict_bodies[key]["texture"])
-		body.armorMax = dict_bodies[key]["armorMax"]
-		body.healthRegen = dict_bodies[key]["HealthRegen"]
-		
-		body.name = key
-		
-		bodies.append(body)
-
+	var bodies = Body.fromJsonArray("res://Assets/JSON/Player/Body/player_bodies.json")
 	for i in range(0, bodies.size()):
 		var item = Item.instance()
 		item.init(bodies[i])
