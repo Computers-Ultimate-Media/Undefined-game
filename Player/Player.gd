@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 signal player_stats_changed
 signal player_damaged

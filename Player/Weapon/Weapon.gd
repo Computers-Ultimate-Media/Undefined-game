@@ -3,9 +3,6 @@ class_name Weapon
 
 var Bullet = preload("res://Player/Weapon/Bullet.tscn")
 
-export (String) var weapon_owner = "title_"
-
-
 export (int) var maxDamage = 10
 export (int) var minDamage = 5
 # percent chance from 100 to ...
@@ -21,7 +18,7 @@ export (Texture) var bulletTexture = load("res://Assets/Weapon/magic_wand_fire.p
 func shoot(targetShootPoint: Vector2):
 	var bullet = Bullet.instance()
 
-	bullet.set_weapon_owner(weapon_owner)
+	bullet.bullet_owner = get_parent()
 
 	bullet.damage = self.calculate_damage()
 	bullet.texture = bulletTexture.duplicate()

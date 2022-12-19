@@ -2,12 +2,13 @@ extends Node2D
 
 class_name Bullet
 
+var bullet_owner = null
 var direction := Vector2.ZERO setget setDirection
-var weapon_owner setget set_weapon_owner
+
 var damage: int
 var time: int
 var speed: int
-onready var texture: StreamTexture = $Sprite.texture setget setTexture,getTexture
+onready var texture: Texture = $Sprite.texture setget setTexture,getTexture
 onready var timer = $KillTimer
 
 func _ready():
@@ -20,30 +21,25 @@ func _physics_process(delta):
 
 func attack(target):
 	target.hit(damage)
-#	queue_free()
+	queue_free()
 	if(target.health <= 0):
 		target.death()
 
-func set_weapon_owner(value):
-	weapon_owner = value
-
-func setDirection(newDirection: Vector2):
-	direction = newDirection
-
+func _on_Bullet_body_entered(body):
+	if not (body is Player) and not (body is Enemy):
+		queue_free()
+	
+	if (body is Player) and not(bullet_owner is Player):
+		attack(body)
+	
+	elif (body is Enemy) and (bullet_owner is Player):
+		attack(body)
+		
 func _on_KillTimer_timeout():
 	queue_free()
 
-func _on_Bullet_body_entered(body):
-	if body.name == "TileMap" \
-	or body.name == "StaticBody2D":
-		queue_free()
-	else:
-		if !body.name.begins_with(weapon_owner) && !body.name.begins_with("@"+weapon_owner) :
-			attack(body)
-
-#	if body.has_method("hit"):
-#		attack(body)
-#	queue_free()
+func setDirection(newDirection: Vector2):
+	direction = newDirection
 
 func getTexture():
 	return $Sprite.texture
