@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemy/Enemy.gd"
 }, {
+"base": "EditorVCSInterface",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
 "base": "Sprite",
 "class": "Head",
 "language": "GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "Bullet": "",
 "DungeonRoom": "",
 "Enemy": "",
+"GitAPI": "",
 "Head": "",
 "RoomData": "",
 "RoomDataHolder": "",
