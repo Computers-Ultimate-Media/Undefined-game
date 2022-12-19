@@ -40,9 +40,7 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-	if(Input.is_action_just_released("ui_accept")):
-		get_tree().root.get_node("main/Map").generate_map()
-
+    
 	if velocity.length() > 0:
 		$Sprite.play("run")
 		velocity = velocity.normalized() * self.moveSpeed
