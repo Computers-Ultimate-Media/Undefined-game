@@ -5,7 +5,6 @@
 [ext_resource path="res://HUD/EnemyHealthBar/HealthBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapon/Weapon.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
@@ -28,12 +27,11 @@ position = Vector2( 6, 2 )
 scale = Vector2( 0.2, 0.2 )
 z_index = 1
 weapon_owner = "Enemy"
-max_damage = 15
-critical_damage = 150
-critical_damage_chance = 30
-max_distance_shot = 100
+criticalDamage = 20
+criticalDamageChance = 100
+shootingDistance = 150
 speed = 8
-reload_time = 2
+reloadTime = 2
 
 [node name="Shape" type="Sprite" parent="."]
 texture = ExtResource( 2 )
