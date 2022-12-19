@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Player/Idle-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Weapons/Blade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Weapon/Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Player/Foot/Foot.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Player/Head/head.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Player/Body/body.png" type="Texture" id=6]
@@ -12,42 +12,52 @@
 [ext_resource path="res://Assets/Player/Run-Sheet.png" type="Texture" id=10]
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 16, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 80, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 144, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 208, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 272, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 336, 32, 32, 32 )
 
@@ -73,17 +83,17 @@ collision_layer = 3
 collision_mask = 17
 script = ExtResource( 2 )
 
-[node name="Blade" parent="." instance=ExtResource( 3 )]
+[node name="Weapon" parent="." instance=ExtResource( 3 )]
 position = Vector2( -8, 16 )
 z_index = 1
 weapon_owner = "Player"
-max_damage = 50
-min_damage = 10
-critical_damage = 120
-critical_damage_chance = 100
-max_distance_shot = 20
+maxDamage = 50
+minDamage = 10
+criticalDamage = 120
+criticalDamageChance = 100
+shootingDistance = 20
 speed = 6
-reload_time = 1
+reloadTime = 1
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
@@ -106,7 +116,6 @@ script = ExtResource( 8 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 script = ExtResource( 9 )
-moveSpeed = 150
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

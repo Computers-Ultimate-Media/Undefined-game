@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Weapon/Bullet.gd"
+}, {
+"base": "Node2D",
 "class": "DungeonRoom",
 "language": "GDScript",
 "path": "res://Rooms/Room.gd"
@@ -19,15 +24,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemy/Enemy.gd"
 }, {
-"base": "EditorVCSInterface",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
-}, {
-"base": "Node2D",
-"class": "Projectile",
+"base": "Sprite",
+"class": "Head",
 "language": "GDScript",
-"path": "res://Weapons/Projectile.gd"
+"path": "res://Player/Head.gd"
 }, {
 "base": "Reference",
 "class": "RoomData",
@@ -43,15 +43,21 @@ _global_script_classes=[ {
 "class": "RoomExit",
 "language": "GDScript",
 "path": "res://Rooms/RoomExit.gd"
+}, {
+"base": "Panel",
+"class": "Slot",
+"language": "GDScript",
+"path": "res://Inventory/Scripts/Slot.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "DungeonRoom": "",
 "Enemy": "",
-"GitAPI": "",
-"Projectile": "",
+"Head": "",
 "RoomData": "",
 "RoomDataHolder": "",
-"RoomExit": ""
+"RoomExit": "",
+"Slot": ""
 }
 
 [application]
@@ -125,14 +131,19 @@ shoot={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+open_inventory={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 2d_physics/layer_1="collisions"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
-2d_physics/layer_4="player_projectile"
-2d_physics/layer_5="enemy_projectile"
+2d_physics/layer_4="player_bullet"
+2d_physics/layer_5="enemy_bullet"
 
 [mono]
 

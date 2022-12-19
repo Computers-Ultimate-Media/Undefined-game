@@ -1,10 +1,14 @@
 extends Sprite
 
-export var armorMax = 100 setget setArmorMax,getArmorMax
-export var hpRegen = 1 setget setHpRegen,getHpRegen
+export var armorMax = 0 setget setArmorMax,getArmorMax
+export var healthRegen = 0 setget setHealthRegen,getHealthRegen
 
-func _ready():
-	pass
+static func getDefault():
+	var defaultBody = load("res://Player/Body.tscn").instance()
+	defaultBody.texture = null
+	defaultBody.armorMax = 0
+	defaultBody.healthRegen = 0
+	return defaultBody
 
 func getArmorMax():
 	return armorMax
@@ -12,8 +16,9 @@ func getArmorMax():
 func setArmorMax(value):
 	armorMax = value
 
-func getHpRegen():
-	return hpRegen
+func getHealthRegen():
+	return healthRegen
 
-func setHpRegen(value):
-	hpRegen = value
+func setHealthRegen(value):
+	healthRegen = value
+

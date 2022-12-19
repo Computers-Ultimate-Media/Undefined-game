@@ -1,14 +1,14 @@
 {
   "empty": {
     "texture": "res://Assets/Player/Head/empty.png",
-    "hpMax": 100
+    "healthMax": 100
   },
   "blackANDwhite": {
     "texture": "res://Assets/Player/Head/head.png",
-    "hpMax": 200
+    "healthMax": 200
   },
   "cat": {
     "texture": "res://Assets/Player/Head/cat.png",
-    "hpMax": 9
+    "healthMax": 999
   }
 }
