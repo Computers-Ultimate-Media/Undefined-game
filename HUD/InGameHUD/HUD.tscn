@@ -14,28 +14,30 @@ pause_mode = 2
 visible = false
 
 [node name="HP" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 
 [node name="Icon" type="Sprite" parent="HP"]
-position = Vector2( 50, 550 )
+position = Vector2( 60, -50 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="HP"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 75.0
-margin_top = 540.0
-margin_right = 111.0
-margin_bottom = 560.0
+margin_left = 80.0
+margin_top = -60.0
+margin_right = 116.0
+margin_bottom = -40.0
 text = "HP_"
 align = 1
 valign = 1
 uppercase = true
 
 [node name="Armor" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 
 [node name="Icon" type="Sprite" parent="Armor"]
-position = Vector2( 170, 550 )
+position = Vector2( 200, -50 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
@@ -44,30 +46,32 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 195.0
-margin_top = 540.0
-margin_right = 231.0
-margin_bottom = 560.0
+margin_left = 220.0
+margin_top = -60.0
+margin_right = 256.0
+margin_bottom = -40.0
 text = "AR_"
 align = 1
 valign = 1
 uppercase = true
 
 [node name="Coin" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -39.0
+margin_bottom = 20.0
 
 [node name="Icon" type="Sprite" parent="Coin"]
-position = Vector2( 900, 50 )
+position = Vector2( -80, 50 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="Coin"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 920.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -99.0
 margin_top = 40.0
-margin_right = 972.0
+margin_right = -47.0
 margin_bottom = 60.0
 text = "COIN_"
 align = 1
