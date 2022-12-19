@@ -18,7 +18,8 @@ func spawn_Enemies():
 			var instance = enemy[0].instance()
 			enemies.call_deferred("add_child", instance)
 			instance.connect("enemy_death", self, "on_enemy_death")
-			instance.position = Vector2(0,random.randi_range(0, 100)) 
+			instance.position = Vector2(0,random.randi_range(0, 100))
+			instance.nav2d = $Navigation2D
 
 func on_enemy_death():
 	var enemies_count = $Enemies.get_children().size() - 1
