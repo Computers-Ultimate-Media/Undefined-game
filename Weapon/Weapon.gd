@@ -22,7 +22,7 @@ func shoot():
 		target_position = target.global_position
 		
 	var bullet = Bullet.instance()
-	add_child(bullet)
+	get_tree().root.add_child(bullet)
 	bullet.global_position = $ShootPoint.global_position
 	var direction_to_mouse = $ShootPoint.global_position.direction_to(target_position).normalized()
 

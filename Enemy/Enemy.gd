@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Enemy
 
 onready var floating_text = preload("res://HUD/InGameHUD/FloatingText.tscn") 
-onready var weapon = $Blade
+onready var weapon = $Weapon
 onready var health_bar = $HeathBar
 
 export var health : int
