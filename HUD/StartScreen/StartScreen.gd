@@ -12,7 +12,7 @@ func _ready():
 	$AnimatedSprite/AnimationPlayer.play("background")
 	$BackSound.play()
 	
-	var dict_settings = read_from_JSON("res://Assets/JSON/Game settings/settings.json")
+	var dict_settings = Utils.read_from_JSON("res://Assets/JSON/Game settings/settings.json")
 	
 	fullscreen = dict_settings["fullscreen"]
 	sound_value = dict_settings["sound_value"]
@@ -33,13 +33,3 @@ func set_windowed():
 	OS.set_window_position(Vector2(window_x, window_y))
 	OS.set_window_size(scaled_size)
 	vp.set_size(scaled_size)
-
-func read_from_JSON(path):
-	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, File.READ)
-		var data = parse_json(file.get_as_text())
-		file.close()
-		return data
-	else:
-		printerr("Invalid path given")
