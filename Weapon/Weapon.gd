@@ -8,8 +8,11 @@ export var weapon_owner = "title_"
 export var maxDamage = 10
 export var minDamage = 5
 
+# percent chance from 100 to ...
 export var criticalDamage: int
+# percent chance from 0 to 100
 export var criticalDamageChance: int
+
 export var shootingDistance: int
 export var speed: int
 
