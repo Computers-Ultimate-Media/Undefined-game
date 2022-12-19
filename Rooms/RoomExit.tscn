@@ -8,13 +8,13 @@ extents = Vector2( 6, 16 )
 
 [sub_resource type="Gradient" id=4]
 interpolation_mode = 2
-offsets = PoolRealArray( 0.0288066, 1 )
+offsets = PoolRealArray( 0.00803213, 1 )
 colors = PoolColorArray( 0.145098, 0.0745098, 0.101961, 1, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture2D" id=3]
 gradient = SubResource( 4 )
-fill_from = Vector2( 0.254167, 0.520833 )
-fill_to = Vector2( 0.8625, 0.520833 )
+fill_from = Vector2( 0.283333, 0.516667 )
+fill_to = Vector2( 0.991667, 0.520833 )
 
 [node name="RoomExit" type="Node2D" groups=["exit"]]
 script = ExtResource( 1 )
@@ -42,8 +42,8 @@ shape = SubResource( 1 )
 position = Vector2( 24, 0 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -32, 0 )
-scale = Vector2( 1.1875, 1 )
+position = Vector2( -29, 0 )
+scale = Vector2( 1.09375, 1 )
 z_index = 100
 texture = SubResource( 3 )
 

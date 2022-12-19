@@ -2,7 +2,7 @@ class_name RoomDataHolder
 
 
 var starting_rooms = ["Room1","Room1"]
-var rooms = ["Room1","Room1"] 
+var rooms = ["Room1","Room1","Room2","Room3"] 
 var boss_rooms = ["Room1","Room1"] 
 
 func get_starting_room():
