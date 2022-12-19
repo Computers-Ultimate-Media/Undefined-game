@@ -14,7 +14,7 @@ var settings_dict = {
 }
 
 func _ready():
-	settings_dict = read_from_JSON("res://Assets/JSON/Game settings/settings.json")
+	settings_dict = Utils.read_from_JSON("res://Assets/JSON/Game settings/settings.json")
 	
 	$FullscreenCheck.pressed = settings_dict["fullscreen"]
 	$FpsScroll.value = settings_dict["framerate"]
@@ -26,30 +26,11 @@ func _on_ExitButton_pressed():
 	settings_dict["sound_value"] = sound_value
 	settings_dict["framerate"] = framerate
 	
-	_save_to_JSON(settings_dict, path)
+	Utils.save_to_JSON(settings_dict, path)
 	
 	Engine.target_fps = framerate
 	OS.window_fullscreen = fullscreen
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), sound_value)
-
-func _save_to_JSON(dict, path):
-		var file = File.new()
-		if file.file_exists(path):
-			file.open(path, File.WRITE)
-			file.store_string(JSON.print(dict, "\t")) 
-			file.close()
-		else:
-			printerr("Invalid path given")
-
-func read_from_JSON(path):
-	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, File.READ)
-		var data = parse_json(file.get_as_text())
-		file.close()
-		return data
-	else:
-		printerr("Invalid path given")
 
 func _on_FpsScroll_value_changed(value):
 	$FpsScroll/Value.text = str(value) 

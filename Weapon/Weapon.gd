@@ -41,7 +41,6 @@ func calculate_damage() -> int:
 	var damage = round(rand_range(minDamage, maxDamage))
 	if(rand_range(0, 100) < criticalDamageChance):
 		damage = damage * (criticalDamage / 100)
-	print(damage)
 	return damage
 
 
