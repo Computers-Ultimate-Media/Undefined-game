@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Foot.png-8c455d05c5d208d8716980d52ea280af.stex"
+path="res://.import/Wood.png-b491c59611997e0423ea67fdf926dd93.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Foot/Foot.png"
-dest_files=[ "res://.import/Foot.png-8c455d05c5d208d8716980d52ea280af.stex" ]
+source_file="res://Assets/Weapon/Wood.png"
+dest_files=[ "res://.import/Wood.png-b491c59611997e0423ea67fdf926dd93.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wood.png-00e39facf597933819669acf180e1171.stex"
+path="res://.import/makasin.png-2a2d28a8cde76b6363d3eea719c0ef81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Wood.png"
-dest_files=[ "res://.import/Wood.png-00e39facf597933819669acf180e1171.stex" ]
+source_file="res://Assets/Player/Foot/makasin.png"
+dest_files=[ "res://.import/makasin.png-2a2d28a8cde76b6363d3eea719c0ef81.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

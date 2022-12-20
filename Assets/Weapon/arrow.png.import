@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/head.png-b0b91a8444e92d0d8d7f2329f8f5e906.stex"
+path="res://.import/arrow.png-183f80a7f87b772d2e4adf28d8ca787b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Head/head.png"
-dest_files=[ "res://.import/head.png-b0b91a8444e92d0d8d7f2329f8f5e906.stex" ]
+source_file="res://Assets/Weapon/arrow.png"
+dest_files=[ "res://.import/arrow.png-183f80a7f87b772d2e4adf28d8ca787b.stex" ]
 
 [params]
 
