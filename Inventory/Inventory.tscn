@@ -7,7 +7,7 @@
 [ext_resource path="res://Inventory/Scripts/Controls/FootControl.gd" type="Script" id=6]
 [ext_resource path="res://Inventory/Scripts/Slot.gd" type="Script" id=7]
 [ext_resource path="res://Inventory/Scripts/Controls/HeadControl.gd" type="Script" id=8]
-[ext_resource path="res://Inventory/Scripts/Controls/GunControl.gd" type="Script" id=9]
+[ext_resource path="res://Inventory/Scripts/Controls/WeaponControl.gd" type="Script" id=9]
 [ext_resource path="res://Inventory/Scripts/SelectedSlot.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -246,19 +246,66 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 10 )
 
-[node name="GunControl" type="Control" parent="."]
+[node name="WeaponControl" type="Control" parent="."]
 margin_left = 512.0
 margin_right = 1024.0
 margin_bottom = 300.0
 script = ExtResource( 9 )
 
-[node name="GunGridContainer" type="GridContainer" parent="GunControl"]
+[node name="GunGridContainer" type="GridContainer" parent="WeaponControl"]
 margin_left = 273.0
 margin_top = 16.0
 margin_right = 493.0
 margin_bottom = 163.0
 
-[node name="GunSelectedSlot" type="Panel" parent="GunControl"]
+[node name="WeaponSlot_1" type="Panel" parent="WeaponControl/GunGridContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_2" type="Panel" parent="WeaponControl/GunGridContainer"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_3" type="Panel" parent="WeaponControl/GunGridContainer"]
+margin_top = 136.0
+margin_right = 64.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_4" type="Panel" parent="WeaponControl/GunGridContainer"]
+margin_top = 204.0
+margin_right = 64.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_5" type="Panel" parent="WeaponControl/GunGridContainer"]
+margin_top = 272.0
+margin_right = 64.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_6" type="Panel" parent="WeaponControl/GunGridContainer"]
+margin_top = 340.0
+margin_right = 64.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSelectedSlot" type="Panel" parent="WeaponControl"]
 margin_left = 123.0
 margin_top = 158.0
 margin_right = 187.0

@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Weapon/Bullet.gd"
+"path": "res://Player/Weapon/Bullet.gd"
 }, {
 "base": "Node2D",
 "class": "DungeonRoom",
@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "Utils",
 "language": "GDScript",
 "path": "res://Utils.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Player/Weapon/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Body": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "RoomDataHolder": "",
 "RoomExit": "",
 "Slot": "",
-"Utils": ""
+"Utils": "",
+"Weapon": ""
 }
 
 [application]
@@ -101,6 +107,7 @@ enabled=PoolStringArray(  )
 
 "шрифт"=false
 font=false
+layer=false
 
 [gui]
 

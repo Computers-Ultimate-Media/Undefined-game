@@ -56,7 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_inventory"):
 		emit_signal("open_inventory", self)
 	if event.is_action_pressed("shoot"):
-		weapon.shoot()
+		weapon.shoot(get_global_mouse_position())
 
 func player_regenerate(HealthRegen):
 	if(self.healthMax - self.health > 0 && can_regenerate):
@@ -80,10 +80,15 @@ func _on_Player_player_damaged():
 	emit_signal("player_stats_changed", self)
 
 
-func setWeapon(value):
-	weapon.queue_free()
-	weapon = value
-	self.add_child(weapon)
+func setWeapon(newWeapon):
+	remove_child(get_node(weapon.name))
+
+	if not newWeapon:
+		newWeapon = load("res://Player/Weapon/Weapon.gd").getDefault()
+
+	weapon = newWeapon
+	add_child(newWeapon)
+	emit_signal("player_stats_changed", self)
 
 func setHead(newHead):
 	$Sprite.remove_child($Sprite.get_node(head.name))

@@ -8,5 +8,6 @@ func _on_Player_open_inventory(player):
 		($HeadControl).player = player
 		($BodyControl).player = player
 		($FootControl).player = player
+		($WeaponControl).player = player
 
 	self.visible = !(self.visible)
