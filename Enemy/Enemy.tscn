@@ -26,7 +26,6 @@ margin_bottom = 255.0
 [node name="Blade" parent="." instance=ExtResource( 4 )]
 z_index = 1
 texture = ExtResource( 5 )
-bulletTexturePath = "res://Assets/Weapon/arrow.png"
 
 [node name="Shape" type="Sprite" parent="."]
 texture = ExtResource( 2 )

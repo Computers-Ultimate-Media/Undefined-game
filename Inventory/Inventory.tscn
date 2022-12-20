@@ -41,14 +41,14 @@ custom_constants/vseparation = 1
 custom_constants/hseparation = 4
 columns = 3
 
-[node name="HeadSlot_1" type="Panel" parent="HeadControl/HeadGridContainer"]
+[node name="HeadSlot_1" type="PanelContainer" parent="HeadControl/HeadGridContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="HeadSlot_2" type="Panel" parent="HeadControl/HeadGridContainer"]
+[node name="HeadSlot_2" type="PanelContainer" parent="HeadControl/HeadGridContainer"]
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
@@ -56,7 +56,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="HeadSlot_3" type="Panel" parent="HeadControl/HeadGridContainer"]
+[node name="HeadSlot_3" type="PanelContainer" parent="HeadControl/HeadGridContainer"]
 margin_left = 136.0
 margin_right = 200.0
 margin_bottom = 64.0
@@ -64,7 +64,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="HeadSlot_4" type="Panel" parent="HeadControl/HeadGridContainer"]
+[node name="HeadSlot_4" type="PanelContainer" parent="HeadControl/HeadGridContainer"]
 margin_top = 65.0
 margin_right = 64.0
 margin_bottom = 129.0
@@ -72,7 +72,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="HeadSlot_5" type="Panel" parent="HeadControl/HeadGridContainer"]
+[node name="HeadSlot_5" type="PanelContainer" parent="HeadControl/HeadGridContainer"]
 margin_left = 68.0
 margin_top = 65.0
 margin_right = 132.0
@@ -81,7 +81,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="HeadSlot_6" type="Panel" parent="HeadControl/HeadGridContainer"]
+[node name="HeadSlot_6" type="PanelContainer" parent="HeadControl/HeadGridContainer"]
 margin_left = 136.0
 margin_top = 65.0
 margin_right = 200.0
@@ -90,7 +90,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="HeadSelectedSlot" type="Panel" parent="HeadControl"]
+[node name="HeadSelectedSlot" type="PanelContainer" parent="HeadControl"]
 margin_left = 325.0
 margin_top = 160.0
 margin_right = 389.0
@@ -114,14 +114,14 @@ custom_constants/vseparation = 1
 custom_constants/hseparation = 4
 columns = 3
 
-[node name="BodySlot_1" type="Panel" parent="BodyControl/BodyGridContainer"]
+[node name="BodySlot_1" type="PanelContainer" parent="BodyControl/BodyGridContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="BodySlot_2" type="Panel" parent="BodyControl/BodyGridContainer"]
+[node name="BodySlot_2" type="PanelContainer" parent="BodyControl/BodyGridContainer"]
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
@@ -129,7 +129,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="BodySlot_3" type="Panel" parent="BodyControl/BodyGridContainer"]
+[node name="BodySlot_3" type="PanelContainer" parent="BodyControl/BodyGridContainer"]
 margin_left = 136.0
 margin_right = 200.0
 margin_bottom = 64.0
@@ -137,7 +137,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="BodySlot_4" type="Panel" parent="BodyControl/BodyGridContainer"]
+[node name="BodySlot_4" type="PanelContainer" parent="BodyControl/BodyGridContainer"]
 margin_top = 65.0
 margin_right = 64.0
 margin_bottom = 129.0
@@ -145,7 +145,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="BodySlot_5" type="Panel" parent="BodyControl/BodyGridContainer"]
+[node name="BodySlot_5" type="PanelContainer" parent="BodyControl/BodyGridContainer"]
 margin_left = 68.0
 margin_top = 65.0
 margin_right = 132.0
@@ -154,7 +154,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="BodySlot_6" type="Panel" parent="BodyControl/BodyGridContainer"]
+[node name="BodySlot_6" type="PanelContainer" parent="BodyControl/BodyGridContainer"]
 margin_left = 136.0
 margin_top = 65.0
 margin_right = 200.0
@@ -163,7 +163,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="BodySelectedSlot" type="Panel" parent="BodyControl"]
+[node name="BodySelectedSlot" type="PanelContainer" parent="BodyControl"]
 margin_left = 327.0
 margin_top = 75.0
 margin_right = 391.0
@@ -188,14 +188,14 @@ custom_constants/vseparation = 1
 custom_constants/hseparation = 4
 columns = 3
 
-[node name="FootSlot_1" type="Panel" parent="FootControl/FootGridContainer"]
+[node name="FootSlot_1" type="PanelContainer" parent="FootControl/FootGridContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="FootSlot_2" type="Panel" parent="FootControl/FootGridContainer"]
+[node name="FootSlot_2" type="PanelContainer" parent="FootControl/FootGridContainer"]
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
@@ -203,7 +203,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="FootSlot_3" type="Panel" parent="FootControl/FootGridContainer"]
+[node name="FootSlot_3" type="PanelContainer" parent="FootControl/FootGridContainer"]
 margin_left = 136.0
 margin_right = 200.0
 margin_bottom = 64.0
@@ -211,7 +211,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="FootSlot_4" type="Panel" parent="FootControl/FootGridContainer"]
+[node name="FootSlot_4" type="PanelContainer" parent="FootControl/FootGridContainer"]
 margin_top = 65.0
 margin_right = 64.0
 margin_bottom = 129.0
@@ -219,7 +219,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="FootSlot_5" type="Panel" parent="FootControl/FootGridContainer"]
+[node name="FootSlot_5" type="PanelContainer" parent="FootControl/FootGridContainer"]
 margin_left = 68.0
 margin_top = 65.0
 margin_right = 132.0
@@ -228,7 +228,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="FootSlot_6" type="Panel" parent="FootControl/FootGridContainer"]
+[node name="FootSlot_6" type="PanelContainer" parent="FootControl/FootGridContainer"]
 margin_left = 136.0
 margin_top = 65.0
 margin_right = 200.0
@@ -237,7 +237,7 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="FootSelectedSlot" type="Panel" parent="FootControl"]
+[node name="FootSelectedSlot" type="PanelContainer" parent="FootControl"]
 margin_left = 122.0
 margin_top = 75.0
 margin_right = 186.0
@@ -252,20 +252,37 @@ margin_right = 1024.0
 margin_bottom = 300.0
 script = ExtResource( 9 )
 
-[node name="GunGridContainer" type="GridContainer" parent="WeaponControl"]
-margin_left = 273.0
-margin_top = 16.0
-margin_right = 493.0
-margin_bottom = 163.0
+[node name="WeaponGridContainer" type="GridContainer" parent="WeaponControl"]
+margin_left = 283.0
+margin_top = 28.0
+margin_right = 503.0
+margin_bottom = 175.0
+columns = 3
 
-[node name="WeaponSlot_1" type="Panel" parent="WeaponControl/GunGridContainer"]
+[node name="WeaponSlot_1" type="PanelContainer" parent="WeaponControl/WeaponGridContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="WeaponSlot_2" type="Panel" parent="WeaponControl/GunGridContainer"]
+[node name="WeaponSlot_2" type="PanelContainer" parent="WeaponControl/WeaponGridContainer"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_3" type="PanelContainer" parent="WeaponControl/WeaponGridContainer"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="WeaponSlot_4" type="PanelContainer" parent="WeaponControl/WeaponGridContainer"]
 margin_top = 68.0
 margin_right = 64.0
 margin_bottom = 132.0
@@ -273,39 +290,25 @@ rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="WeaponSlot_3" type="Panel" parent="WeaponControl/GunGridContainer"]
-margin_top = 136.0
-margin_right = 64.0
-margin_bottom = 200.0
+[node name="WeaponSlot_5" type="PanelContainer" parent="WeaponControl/WeaponGridContainer"]
+margin_left = 68.0
+margin_top = 68.0
+margin_right = 132.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="WeaponSlot_4" type="Panel" parent="WeaponControl/GunGridContainer"]
-margin_top = 204.0
-margin_right = 64.0
-margin_bottom = 268.0
+[node name="WeaponSlot_6" type="PanelContainer" parent="WeaponControl/WeaponGridContainer"]
+margin_left = 136.0
+margin_top = 68.0
+margin_right = 200.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 64, 64 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 7 )
 
-[node name="WeaponSlot_5" type="Panel" parent="WeaponControl/GunGridContainer"]
-margin_top = 272.0
-margin_right = 64.0
-margin_bottom = 336.0
-rect_min_size = Vector2( 64, 64 )
-custom_styles/panel = SubResource( 1 )
-script = ExtResource( 7 )
-
-[node name="WeaponSlot_6" type="Panel" parent="WeaponControl/GunGridContainer"]
-margin_top = 340.0
-margin_right = 64.0
-margin_bottom = 404.0
-rect_min_size = Vector2( 64, 64 )
-custom_styles/panel = SubResource( 1 )
-script = ExtResource( 7 )
-
-[node name="WeaponSelectedSlot" type="Panel" parent="WeaponControl"]
+[node name="WeaponSelectedSlot" type="PanelContainer" parent="WeaponControl"]
 margin_left = 123.0
 margin_top = 158.0
 margin_right = 187.0

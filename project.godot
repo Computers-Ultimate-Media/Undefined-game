@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Rooms/RoomExit.gd"
 }, {
-"base": "Panel",
+"base": "PanelContainer",
 "class": "Slot",
 "language": "GDScript",
 "path": "res://Inventory/Scripts/Slot.gd"
