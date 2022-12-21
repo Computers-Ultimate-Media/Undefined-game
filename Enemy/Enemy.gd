@@ -65,8 +65,10 @@ func hit(damage):
 	text.amount = damage
 	text.position = self.position
 	get_tree().root.add_child(text)
-	
-	health -= damage
+
+	self.health -= damage
+	if self.health <= 0:
+		self.death()
 	health_bar._on_health_updated(health, 0)
 	health_bar._display_health_bar(true)
 

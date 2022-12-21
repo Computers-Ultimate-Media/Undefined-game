@@ -22,8 +22,6 @@ func _physics_process(delta):
 func attack(target):
 	target.hit(damage)
 	queue_free()
-	if(target.health <= 0):
-		target.death()
 
 func _on_Bullet_body_entered(body):
 	if not (body is Player) and not (body is Enemy):

@@ -71,6 +71,8 @@ func _on_HP_timeout():
 func hit(damage):
 	$Timer/HP.start()
 	self.health -= damage
+	if self.health <= 0:
+		self.death()
 	emit_signal("player_damaged")
 
 func death():
