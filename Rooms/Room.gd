@@ -62,6 +62,7 @@ func setDoors(state:bool):
 
 const EXIT_ERROR = 0.1
 func get_exit(dir : Vector2):
+	dir = dir.normalized()
 	var exit
 	if (dir-Vector2.UP).length()<EXIT_ERROR:
 			exit = "UP"

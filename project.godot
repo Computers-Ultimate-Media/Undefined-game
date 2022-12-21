@@ -138,6 +138,11 @@ shoot={
 
 project/assembly_name="TDS"
 
+[network]
+
+limits/debugger_stdout/max_chars_per_second=100000
+limits/debugger_stdout/max_messages_per_frame=1000
+
 [physics]
 
 common/enable_pause_aware_picking=true
