@@ -9,25 +9,26 @@ export (int) var minDamage = 5
 export (int) var criticalDamagePercentage =  140
 # percent chance from 0 to 100
 export (int) var criticalDamageChance = 20
-export (int) var shootingDistance = 200
-export (int) var bulletSpeed = 6
-export (int) var reloadTime = 0 setget ,getReloadTime
+# count of blocks (16x16) the bullet will pass before being destroyed
+export (int) var shootingDistance = 5
+# count of blocks (16x16) the bullet flies in a second
+export (int) var bulletSpeed = 5
+export (int) var reloadTime = 3 setget ,getReloadTime
 export (Texture) var texture = load("res://Assets/Weapon/magic_wand.png") setget setTexture,getTexture
 export (Texture) var bulletTexture = load("res://Assets/Weapon/magic_wand_fire.png") 
 
 func shoot(targetShootPoint: Vector2):
 	var bullet = Bullet.instance()
 
-	bullet.bullet_owner = get_parent()
-
-	bullet.damage = self.calculate_damage()
-	bullet.texture = bulletTexture.duplicate()
-	bullet.time = shootingDistance / bulletSpeed
-	bullet.speed = bulletSpeed
 	bullet.global_position = $ShootPoint.global_position
 	var direction_to_mouse = $ShootPoint.global_position.direction_to(targetShootPoint).normalized()
-	
+
 	bullet.setDirection(direction_to_mouse)
+	bullet.set_shooting_range(shootingDistance, bulletSpeed)
+
+	bullet.bullet_owner = get_parent()
+	bullet.damage = self.calculate_damage()
+	bullet.texture = bulletTexture.duplicate()
 	get_tree().root.add_child(bullet)
 
 
