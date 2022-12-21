@@ -38,6 +38,9 @@ tracks/0/keys = {
 
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 84.0 ]
+}
 
 [node name="AnimatedSprite" type="Sprite" parent="."]
 position = Vector2( -17, -5 )

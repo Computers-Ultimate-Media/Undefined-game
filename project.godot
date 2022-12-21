@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Weapon/Bullet.gd"
+"path": "res://Player/Weapon/Bullet.gd"
 }, {
 "base": "Node2D",
 "class": "DungeonRoom",
@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/Head.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Player.gd"
+}, {
 "base": "Reference",
 "class": "RoomData",
 "language": "GDScript",
@@ -54,7 +59,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Rooms/RoomExit.gd"
 }, {
-"base": "Panel",
+"base": "PanelContainer",
 "class": "Slot",
 "language": "GDScript",
 "path": "res://Inventory/Scripts/Slot.gd"
@@ -63,6 +68,11 @@ _global_script_classes=[ {
 "class": "Utils",
 "language": "GDScript",
 "path": "res://Utils.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Player/Weapon/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Body": "",
@@ -71,11 +81,13 @@ _global_script_class_icons={
 "Enemy": "",
 "Foot": "",
 "Head": "",
+"Player": "",
 "RoomData": "",
 "RoomDataHolder": "",
 "RoomExit": "",
 "Slot": "",
-"Utils": ""
+"Utils": "",
+"Weapon": ""
 }
 
 [application]

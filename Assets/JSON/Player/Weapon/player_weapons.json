@@ -1,0 +1,13 @@
+{
+  "empty": {
+    "texture": "res://Assets/Weapon/bow.png",
+    "bulletTexture": "res://Assets/Weapon/arrow.png",
+    "maxDamage": 10,
+    "minDamage": 5,
+    "criticalDamagePercentage": 140,
+    "criticalDamageChance": 20,
+    "shootingDistance": 200,
+    "bulletSpeed": 6,
+    "reloadTime": 0
+  }
+}

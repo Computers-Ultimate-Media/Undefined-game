@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 class_name Slot
 
 onready var inventoryNode = find_parent("Inventory")

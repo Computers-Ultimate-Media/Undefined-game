@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Enemy/Dungeon_Character.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemy/enemy_blue_fire.png" type="Texture" id=2]
 [ext_resource path="res://HUD/EnemyHealthBar/HealthBar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Weapon/Weapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Weapon/Weapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Weapon/bow.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
@@ -23,20 +24,11 @@ margin_right = 1641.0
 margin_bottom = 255.0
 
 [node name="Blade" parent="." instance=ExtResource( 4 )]
-position = Vector2( 6, 2 )
-scale = Vector2( 0.2, 0.2 )
 z_index = 1
-weapon_owner = "Enemy"
-criticalDamage = 120
-criticalDamageChance = 50
-shootingDistance = 150
-speed = 8
-reloadTime = 2
+texture = ExtResource( 5 )
 
 [node name="Shape" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 16, 48, 16, 16 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

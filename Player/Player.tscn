@@ -1,63 +1,54 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Player/Idle-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Weapon/Weapon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Player/Foot/Foot.png" type="Texture" id=4]
+[ext_resource path="res://Player/Weapon/Weapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Player/Body/shit.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Player/Head/head.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Player/Body/body.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/Foot/makasin.png" type="Texture" id=6]
 [ext_resource path="res://Player/Head.gd" type="Script" id=7]
 [ext_resource path="res://Player/Body.gd" type="Script" id=8]
 [ext_resource path="res://Player/Foot.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Player/Run-Sheet.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Weapon/magic_wand.png" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 16, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 80, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 144, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 208, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 272, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 336, 32, 32, 32 )
 
@@ -84,16 +75,8 @@ collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
-position = Vector2( -8, 16 )
 z_index = 1
-weapon_owner = "Player"
-maxDamage = 50
-minDamage = 10
-criticalDamage = 120
-criticalDamageChance = 100
-shootingDistance = 20
-speed = 6
-reloadTime = 1
+texture = ExtResource( 11 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
@@ -103,18 +86,15 @@ __meta__ = {
 }
 
 [node name="Head" type="Sprite" parent="Sprite"]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 7 )
 
 [node name="Body" type="Sprite" parent="Sprite"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 script = ExtResource( 8 )
 
 [node name="Foot" type="Sprite" parent="Sprite"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 script = ExtResource( 9 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -125,7 +105,6 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_lock_": true
 }

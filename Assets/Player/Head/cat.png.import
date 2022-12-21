@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/body.png-7e2a1e22a73df8f98184f3ad581f188b.stex"
+path="res://.import/cat.png-a86fcad74028ae7ca8b56b7d13d0bdd8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Body/body.png"
-dest_files=[ "res://.import/body.png-7e2a1e22a73df8f98184f3ad581f188b.stex" ]
+source_file="res://Assets/Player/Head/cat.png"
+dest_files=[ "res://.import/cat.png-a86fcad74028ae7ca8b56b7d13d0bdd8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
