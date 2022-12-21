@@ -24,8 +24,6 @@ func set_shooting_range(shooting_distance, bullet_speed):
 	self.lifetime = 0.26 * shooting_distance / bullet_speed
 	if lifeTimer:
 		lifeTimer.start(lifetime)
-		print("set_shooting_range " + str(global_position))
-
 
 func attack(target):
 	target.hit(damage)
@@ -48,6 +46,8 @@ func _on_KillTimer_timeout():
 
 
 func setDirection(newDirection: Vector2):
+	# todo: fix inverted bullet
+	rotation = newDirection.angle()
 	direction = newDirection
 
 func getTexture():
