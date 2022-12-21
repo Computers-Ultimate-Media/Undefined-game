@@ -1,5 +1,4 @@
 extends Node2D
-
 class_name Bullet
 
 var bullet_owner = null
@@ -9,12 +8,11 @@ var damage: int
 var lifetime: float = -1
 var speed: int = 0
 onready var texture: Texture = $Sprite.texture setget setTexture,getTexture
-onready var timer = $KillTimer
+onready var lifeTimer = $LifeTimer
 
 func _ready():
 	if lifetime != -1:
-		print("_ready " + str(global_position))
-		timer.start(lifetime)
+		lifeTimer.start(lifetime)
 
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
@@ -24,8 +22,8 @@ func _physics_process(delta):
 func set_shooting_range(shooting_distance, bullet_speed):
 	self.speed = bullet_speed
 	self.lifetime = 0.26 * shooting_distance / bullet_speed
-	if timer:
-		timer.start(lifetime)
+	if lifeTimer:
+		lifeTimer.start(lifetime)
 		print("set_shooting_range " + str(global_position))
 
 
@@ -47,7 +45,6 @@ func _on_Bullet_body_entered(body):
 		
 func _on_KillTimer_timeout():
 	queue_free()
-	print("_on_KillTimer_timeout " + str(global_position))
 
 
 func setDirection(newDirection: Vector2):

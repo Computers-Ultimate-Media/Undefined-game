@@ -13,13 +13,18 @@ export (int) var criticalDamageChance = 20
 export (int) var shootingDistance = 5
 # count of blocks (16x16) the bullet flies in a second
 export (int) var bulletSpeed = 5
-export (int) var reloadTime = 3 setget ,getReloadTime
+export (float) var reloadTime = 0.2 setget ,getReloadTime
 export (Texture) var texture = load("res://Assets/Weapon/magic_wand.png") setget setTexture,getTexture
 export (Texture) var bulletTexture = load("res://Assets/Weapon/magic_wand_fire.png") 
+onready var lifeTimer = $LifeTimer
+var canShoot: bool = true
 
 func shoot(targetShootPoint: Vector2):
 	var bullet = Bullet.instance()
-
+	if canShoot:
+		lifeTimer.start(reloadTime)
+		canShoot = false
+	else: return
 	bullet.global_position = $ShootPoint.global_position
 	var direction_to_mouse = $ShootPoint.global_position.direction_to(targetShootPoint).normalized()
 
@@ -31,12 +36,8 @@ func shoot(targetShootPoint: Vector2):
 	bullet.texture = bulletTexture.duplicate()
 	get_tree().root.add_child(bullet)
 
-
-func calculate_damage() -> int:
-	var damage = round(rand_range(minDamage, maxDamage))
-	if (rand_range(0, 100) < criticalDamageChance):
-		damage *= (criticalDamagePercentage / 100)
-	return damage
+func _on_LifeTimer_timeout():
+	canShoot = true
 
 static func getDefault():
 	var defaultWeapon = load("res://Player/Weapon/Weapon.tscn").instance()
@@ -74,6 +75,12 @@ static func fromJsonArray(path: String) -> Array:
 		weapons.append(weapon)
 
 	return weapons
+	
+func calculate_damage() -> int:
+	var damage = round(rand_range(minDamage, maxDamage))
+	if (rand_range(0, 100) < criticalDamageChance):
+		damage *= (criticalDamagePercentage / 100)
+	return damage
 
 func getTexture():
 	return $Sprite.texture
