@@ -1,8 +1,7 @@
 extends "res://Inventory/Scripts/Controls/InventoryControl.gd"
 
 func _ready():
-	var weapons = Weapon.fromJsonArray("res://Assets/JSON/Player/Weapon/player_weapons.json")
-
+	var weapons = Weapon.fromArray(player_items["weapons"])
 	for i in range(0, weapons.size()):
 		var item = Item.instance()
 		item.init(weapons[i])

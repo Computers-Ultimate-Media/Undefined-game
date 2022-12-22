@@ -54,23 +54,21 @@ static func getDefault():
 	defaultWeapon.name = "Weapon"
 	return defaultWeapon
 
-static func fromJsonArray(path: String) -> Array:
-	var weapons = []
-	var dict_weapons = Utils.read_from_JSON(path)
-	for key in dict_weapons.keys():
+static func fromArray(array_weapons_dict: Array) -> Array:
+	var weapons: Array
+	for weapons_dict in array_weapons_dict:
 		var weapon = load("res://Player/Weapon/Weapon.tscn").instance()
+		weapon.maxDamage = weapons_dict["maxDamage"]
+		weapon.minDamage = weapons_dict["minDamage"]
+		weapon.criticalDamagePercentage = weapons_dict["criticalDamagePercentage"]
+		weapon.criticalDamageChance = weapons_dict["criticalDamageChance"]
+		weapon.shootingDistance = weapons_dict["shootingDistance"]
+		weapon.bulletSpeed = weapons_dict["bulletSpeed"]
+		weapon.reloadTime = weapons_dict["reloadTime"]
+		weapon.bulletTexture = load(weapons_dict["bulletTexture"])
+		weapon.texture = load(weapons_dict["texture"])
 
-		weapon.maxDamage = dict_weapons[key]["maxDamage"]
-		weapon.minDamage = dict_weapons[key]["minDamage"]
-		weapon.criticalDamagePercentage = dict_weapons[key]["criticalDamagePercentage"]
-		weapon.criticalDamageChance = dict_weapons[key]["criticalDamageChance"]
-		weapon.shootingDistance = dict_weapons[key]["shootingDistance"]
-		weapon.bulletSpeed = dict_weapons[key]["bulletSpeed"]
-		weapon.reloadTime = dict_weapons[key]["reloadTime"]
-		weapon.bulletTexture = load(dict_weapons[key]["bulletTexture"])
-		weapon.texture = load(dict_weapons[key]["texture"])
-		
-		weapon.name = key
+		weapon.name = weapons_dict["name"]
 
 		weapons.append(weapon)
 
@@ -81,7 +79,6 @@ func calculate_damage() -> int:
 	if (rand_range(0, 100) < criticalDamageChance):
 		damage *= (criticalDamagePercentage / 100)
 		
-	print(damage)
 	return damage
 
 func get_shootingDistance():

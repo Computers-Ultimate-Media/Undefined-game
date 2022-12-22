@@ -11,16 +11,15 @@ static func getDefault():
 	defaultBody.healthRegen = 0
 	return defaultBody
 
-static func fromJsonArray(path: String) -> Array:
-	var bodies = []
-	var dict_bodies = Utils.read_from_JSON(path)
-	for key in dict_bodies.keys():
+static func fromArray(array_bodies_dict: Array) -> Array:
+	var bodies: Array
+	for bodies_dict in array_bodies_dict:
 		var body = load("res://Player/Body.tscn").instance()
-		body.texture = load(dict_bodies[key]["texture"])
-		body.armorMax = dict_bodies[key]["armorMax"]
-		body.healthRegen = dict_bodies[key]["HealthRegen"]
+		body.texture = load(bodies_dict["texture"])
+		body.armorMax = bodies_dict["armorMax"]
+		body.healthRegen = bodies_dict["HealthRegen"]
 
-		body.name = key
+		body.name = bodies_dict["name"]
 
 		bodies.append(body)
 

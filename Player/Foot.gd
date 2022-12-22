@@ -9,15 +9,14 @@ static func getDefault():
 	defaultFoot.moveSpeed = 100
 	return defaultFoot
 
-static func fromJsonArray(path: String) -> Array:
-	var feet = []
-	var dict_feet = Utils.read_from_JSON(path)
-	for key in dict_feet.keys():
+static func fromArray(array_feet_dict: Array) -> Array:
+	var feet: Array
+	for feet_dict in array_feet_dict:
 		var foot = load("res://Player/Foot.tscn").instance()
-		foot.texture = load(dict_feet[key]["texture"])
-		foot.moveSpeed = dict_feet[key]["moveSpeed"]
+		foot.texture = load(feet_dict["texture"])
+		foot.moveSpeed = feet_dict["moveSpeed"]
 
-		foot.name = key
+		foot.name = feet_dict["name"]
 
 		feet.append(foot)
 

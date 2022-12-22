@@ -1,0 +1,44 @@
+{
+  "heads": [
+    {
+      "name": "blackANDwhite",
+      "texture": "res://Assets/Player/Head/head.png",
+      "healthMax": 200
+    }
+  ],
+  "bodies": [
+    {
+      "name": "blackANDwhite",
+      "texture": "res://Assets/Player/Body/body.png",
+      "armorMax": 100500,
+      "HealthRegen": 100
+    },
+    {
+      "name": "cat",
+      "texture": "res://Assets/Player/Body/cat.png",
+      "armorMax": 77,
+      "HealthRegen": 77
+    }
+  ],
+  "feet": [
+    {
+      "name": "blackANDwhite",
+      "texture": "res://Assets/Player/Foot/foot.png",
+      "moveSpeed": 800
+    }
+  ],
+  "weapons": [
+    {
+      "name": "empty",
+      "texture": "res://Assets/Weapon/bow.png",
+      "bulletTexture": "res://Assets/Weapon/arrow.png",
+      "maxDamage": 1000,
+      "minDamage": 1000,
+      "criticalDamagePercentage": 140,
+      "criticalDamageChance": 20,
+      "shootingDistance": 200,
+      "bulletSpeed": 6,
+      "reloadTime": 0
+    }
+  ]
+}

@@ -5,6 +5,8 @@ const Item = preload("res://Inventory/Item.tscn")
 var player = null setget setPlayer
 var holding_item = null
 
+onready var player_items = Utils.read_from_JSON("res://Assets/JSON/Player/player_items.json")
+
 onready var gridContainer = self.get_child(0)
 onready	var selectedSlot = self.get_child(1)
 onready var grid_slots = gridContainer.get_children()

@@ -1,9 +1,7 @@
 extends "res://Inventory/Scripts/Controls/InventoryControl.gd"
 
-
 func _ready():
-	var feet = Foot.fromJsonArray("res://Assets/JSON/Player/Foot/player_feet.json")
-
+	var feet = Foot.fromArray(player_items["feet"])
 	for i in range(0, feet.size()):
 		var item = Item.instance()
 		item.init(feet[i])
