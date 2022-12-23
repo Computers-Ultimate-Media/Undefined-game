@@ -83,5 +83,4 @@ func _on_ShootTimer_timeout():
 func enemy_shoot():
 	if player != null:
 		weapon.shoot(player.global_position)
-		print(shooting_time)
 		$ShootTimer.wait_time = shooting_time

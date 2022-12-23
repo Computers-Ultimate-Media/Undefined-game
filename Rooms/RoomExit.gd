@@ -8,7 +8,6 @@ func _ready() -> void:
 	set_state(false)
 
 func teleport(node):
-	print_debug(target)
 	node.global_position = target
 
 func _on_Node2D_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
