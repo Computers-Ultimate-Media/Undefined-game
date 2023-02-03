@@ -2,6 +2,10 @@
   "heads": [
     {
       "name": "blackANDwhite",
+      "texture": "res://Assets/Player/Head/cat.png",
+      "healthMax": 300
+    }, {
+      "name": "gdfs",
       "texture": "res://Assets/Player/Head/head.png",
       "healthMax": 500
     }
@@ -15,7 +19,7 @@
     },
     {
       "name": "cat",
-      "texture": "res://Assets/Player/Body/cat.png",
+      "texture": "res://Assets/Player/Body/shit.png",
       "armorMax": 77,
       "HealthRegen": 77
     }
