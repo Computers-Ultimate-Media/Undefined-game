@@ -28,7 +28,7 @@ func _ready():
 	health_bar._on_max_health_updated(max_health)
 
 func _process(delta):
-	if (self.global_position.distance_to(player.global_position)) < 350:
+	if (self.global_position.distance_to(player.global_position)) < 200:
 		target = player 
 		
 		if target and nav2d:
