@@ -4,6 +4,11 @@
       "name": "blackANDwhite",
       "texture": "res://Assets/Player/Head/head.png",
       "healthMax": 500
+    },
+    {
+      "name": "gdfs",
+      "texture": "res://Assets/Player/Head/head.png",
+      "healthMax": 500
     }
   ],
   "bodies": [
