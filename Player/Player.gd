@@ -4,6 +4,7 @@ signal player_stats_changed
 signal player_damaged
 signal player_dead
 signal open_inventory
+signal open_skills_menu
 
 onready var head = $Sprite/Head setget setHead
 onready var foot = $Sprite/Foot setget setFoot
@@ -55,6 +56,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		$Camera2D.zoom *= 1.1
 	if event.is_action_pressed("open_inventory"):
 		emit_signal("open_inventory", self)
+	if event.is_action_pressed("open_skills"):
+		emit_signal("open_skills_menu")
 	if event.is_action_pressed("shoot"):
 		weapon.shoot()
 

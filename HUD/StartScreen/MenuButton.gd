@@ -30,7 +30,7 @@ func _on_click():
 		3:
 			get_tree().change_scene("res://HUD/StartScreen/StartScreen.tscn")
 		4:
-			get_tree().root.get_node("main/GamePause").visible = false
+			get_tree().root.get_node("main/HUD/GamePause").visible = false
 		5:
 			get_tree().reload_current_scene()
 

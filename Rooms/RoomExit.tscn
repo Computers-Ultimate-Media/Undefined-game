@@ -35,14 +35,14 @@ region_rect = Rect2( 112, 64, 16, 32 )
 position = Vector2( -8, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
-position = Vector2( -24, 0 )
+position = Vector2( -16, 0 )
 shape = SubResource( 1 )
 
 [node name="TeleportPosition" type="Position2D" parent="."]
 position = Vector2( 24, 0 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -29, 0 )
+position = Vector2( -32, 0 )
 scale = Vector2( 1.09375, 1 )
 z_index = 100
 texture = SubResource( 3 )
