@@ -1,0 +1,60 @@
+{
+  "weapon": [
+    {
+      "name": "super-weapon",
+      "point": 100
+    },
+    {
+      "name": "super-weapon2",
+      "point": 200
+    }
+  ],
+  "body": [
+    {
+      "name": "super-health",
+      "point": 300
+    },
+    {
+      "name": "super-health2",
+      "point": 400
+    },
+    {
+      "name": "super-armor",
+      "point": 400
+    },
+    {
+      "name": "super-armor2",
+      "point": 400
+    }
+  ],
+  "regeneration": [
+    {
+      "name": "super-regeneration",
+      "point": 300
+    },
+    {
+      "name": "super-regeneration2",
+      "point": 400
+    }
+  ],
+  "strength": [
+    {
+      "name": "super-strength",
+      "point": 300
+    },
+    {
+      "name": "super-strength2",
+      "point": 400
+    }
+  ],
+  "agility": [
+    {
+      "name": "super-agility",
+      "point": 300
+    },
+    {
+      "name": "super-agility2",
+      "point": 400
+    }
+  ]
+}

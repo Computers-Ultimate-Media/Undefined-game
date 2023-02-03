@@ -5,9 +5,9 @@
 [ext_resource path="res://Rooms/RoomExit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 416, 368, -224, 368, -48, 256, 416, 112, -96, 256, 80, -112, 80, 112, 16, 64, 16, 16, -224, -112, -32, 16, -48, 208, -32, 64, -96, 208, -144, 64, -144, 16, -192, 16, -192, 64 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 2, 1 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 9, 5, 8, 10 ), PoolIntArray( 6, 3, 2, 11 ), PoolIntArray( 7, 6, 11, 12 ), PoolIntArray( 10, 12, 11, 13, 14, 15 ), PoolIntArray( 9, 10, 15 ), PoolIntArray( 9, 15, 16 ), PoolIntArray( 1, 9, 16, 17 ), PoolIntArray( 13, 4, 1, 17, 14 ) ]
-outlines = [ PoolVector2Array( -224, -112, 80, -112, 80, 112, 416, 112, 416, 368, -224, 368 ), PoolVector2Array( -192, 16, -192, 64, -144, 64, -144, 16 ), PoolVector2Array( -32, 16, -32, 64, 16, 64, 16, 16 ), PoolVector2Array( -96, 208, -96, 256, -48, 256, -48, 208 ) ]
+vertices = PoolVector2Array( 272, 272, 416, 368, -224, 368, 224, 272, -48, 256, 224, 224, -96, 256, 80, -112, 80, 112, 16, 64, 16, 16, 416, 112, 272, 224, -224, -112, -32, 16, -48, 208, -32, 64, -96, 208, -144, 64, -144, 16, -192, 16, -192, 64 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4, 5 ), PoolIntArray( 6, 4, 2 ), PoolIntArray( 7, 8, 9, 10 ), PoolIntArray( 11, 1, 0, 12 ), PoolIntArray( 8, 11, 12, 5 ), PoolIntArray( 13, 7, 10, 14 ), PoolIntArray( 9, 8, 5, 4, 15, 16 ), PoolIntArray( 14, 16, 15, 17, 18, 19 ), PoolIntArray( 13, 14, 19 ), PoolIntArray( 13, 19, 20 ), PoolIntArray( 2, 13, 20, 21 ), PoolIntArray( 17, 6, 2, 21, 18 ) ]
+outlines = [ PoolVector2Array( -224, -112, 80, -112, 80, 112, 416, 112, 416, 368, -224, 368 ), PoolVector2Array( -192, 16, -192, 64, -144, 64, -144, 16 ), PoolVector2Array( -32, 16, -32, 64, 16, 64, 16, 16 ), PoolVector2Array( -96, 208, -96, 256, -48, 256, -48, 208 ), PoolVector2Array( 224, 224, 224, 272, 272, 272, 272, 224 ) ]
 
 [node name="Room" type="Node2D"]
 position = Vector2( 32, 64 )

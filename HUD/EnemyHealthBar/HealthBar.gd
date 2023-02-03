@@ -1,7 +1,5 @@
 extends TextureProgress
 
-#onready var health_bar = $HealthBar
-
 func _on_health_updated(health, amount):
 	self.value = health
 	
