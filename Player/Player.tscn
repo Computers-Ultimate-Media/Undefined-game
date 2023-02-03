@@ -88,10 +88,13 @@ __meta__ = {
 [node name="Head" type="Sprite" parent="Sprite"]
 texture = ExtResource( 5 )
 script = ExtResource( 7 )
+healthMax = 500
 
 [node name="Body" type="Sprite" parent="Sprite"]
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
+armorMax = 100
+healthRegen = 10
 
 [node name="Foot" type="Sprite" parent="Sprite"]
 texture = ExtResource( 6 )

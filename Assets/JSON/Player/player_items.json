@@ -3,7 +3,7 @@
     {
       "name": "blackANDwhite",
       "texture": "res://Assets/Player/Head/head.png",
-      "healthMax": 200
+      "healthMax": 500
     }
   ],
   "bodies": [
@@ -24,12 +24,12 @@
     {
       "name": "blackANDwhite",
       "texture": "res://Assets/Player/Foot/foot.png",
-      "moveSpeed": 800
+      "moveSpeed": 2000
     }
   ],
   "weapons": [
     {
-      "name": "empty",
+      "name": "bow",
       "texture": "res://Assets/Weapon/bow.png",
       "bulletTexture": "res://Assets/Weapon/arrow.png",
       "maxDamage": 1000,
@@ -37,6 +37,18 @@
       "criticalDamagePercentage": 140,
       "criticalDamageChance": 20,
       "shootingDistance": 200,
+      "bulletSpeed": 6,
+      "reloadTime": 0
+    },
+    {
+      "name": "book",
+      "texture": "res://Assets/Weapon/book.png",
+      "bulletTexture": "res://Assets/Weapon/list.png",
+      "maxDamage": 100,
+      "minDamage": 50,
+      "criticalDamagePercentage": 140,
+      "criticalDamageChance": 20,
+      "shootingDistance": 1000,
       "bulletSpeed": 6,
       "reloadTime": 0
     }

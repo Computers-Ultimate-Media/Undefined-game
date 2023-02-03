@@ -1,5 +1,5 @@
 {
-	"fullscreen": false,
+	"fullscreen": true,
 	"sound_value": 20,
 	"framerate": 60
 }
